@@ -1,0 +1,40 @@
+.nomatch-auth-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+    .img-nomatch-401{
+        background-size:contain;
+        background-repeat: no-repeat;
+        width: 700px;
+        height: 700px;
+        //border: 1px solid black;
+    }
+
+
+    .link-nomatch-401{ 
+    margin-top: 10px;
+    
+        a{
+            text-decoration: none;
+            color: $greenAccept;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    }
+    
+    .link-nomatch-404{
+        margin-top: 10px;
+    
+        a{
+            text-decoration: none;
+            color: blue;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    }
+
+}

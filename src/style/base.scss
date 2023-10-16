@@ -1,0 +1,22 @@
+.head{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-family: 'Dancing Script';
+    font-size: 1.2rem;
+}
+
+body {
+    margin: 0px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.nav-containter{
+    display: grid;
+    grid-template-columns: 1fr 7fr;
+    //grid-gap: 10px;
+}
+
+.base-modulos{
+    margin:20px;
+}

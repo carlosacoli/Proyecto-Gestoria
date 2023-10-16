@@ -1,0 +1,27 @@
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .auth-wrapper{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        height: calc(70vh - 90px);
+        width: 80vw;
+        margin-top: 120px;
+        border: 1px transparent;
+        border-radius: 5px;
+        
+
+        .img-login{
+            background-size:cover;
+        }
+
+        .login-form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $whiteligth;
+        } 
+    }
+}
