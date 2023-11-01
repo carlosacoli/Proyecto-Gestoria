@@ -9,7 +9,7 @@ export default function(){
         <div className="base-modulos">
             <div className="head-container-facturas">
                 <div>
-                    <h3>Facturas Ingresos</h3>
+                    <h2>Facturas Ingresos</h2>
                 </div>
                 <div className="container-icon-facturas">
                     <Link to="add-factura-ingreso" className="icon-upload-ingreso">

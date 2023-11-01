@@ -23,5 +23,21 @@
             align-items: center;
             background-color: $whiteligth;
         } 
+
+        .login-element{
+            @include input-element();
+            @include label-element();
+        }
+
+        .boton-wrapper{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        
+            .boton{
+                @include base-boton();
+                width: 200px;
+            }
+        }
     }
 }

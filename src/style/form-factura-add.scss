@@ -1,3 +1,56 @@
 .form-addfactura-wrapper{
-    background-color: $offwhite;
+    // background-color: $offwhite;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 60px;
+    padding: 42px;
+
+    @include input-element();
+    @include label-element();
+
+    .payment-img{
+        background-position: top;
+        background-size:contain;
+        background-repeat: no-repeat;
+        height: 700px;
+        width: 550px;
+        // border: 1px solid red;
+    }
+    .boton-wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        .boton{
+            @include base-boton();
+            width: 200px;
+        }
+    }
+}
+
+.form-editfactura-wrapper{
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-gap: 60px;
+   padding: 20px 42px;
+
+   @include input-element();
+   @include label-element();
+   
+   .titulo-form{
+    font-family: 'Titillium Web', sans-serif;
+    margin-top: 0px;
+    margin-bottom: 30px;
+
+   }
+   .boton-wrapper{
+       display: flex;
+       align-items: center;
+       justify-content: center;
+   
+       .boton{
+           @include base-boton();
+           width: 200px;
+       }
+   } 
 }

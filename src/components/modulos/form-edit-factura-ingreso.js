@@ -1,50 +1,25 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import moment from 'moment';
+import moment from "moment";
 
-import InvoiceImage from '../../../static/assets/imagenes/invoice.png';
-
-export default class FormFacturaIngreso extends Component {
+export default class FormEditFactIngreso extends Component {
     constructor(props){
         super(props);
 
-        this.state ={
+        this.state={
+            idFacturaEdit: this.props.idToEdit,
             concepto: "",
             fecha_ingreso: "",
-            fecha_subida: moment().format("DD/MM/YYYY"),
             base_imp: "",
             iva: "",
             total_ingreso: "",
-            archivo: "",
-            estado_factura: "PENDIENTE",
-            id_factura_usuario: "1"
+            archivo: ""
         }
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChangeFile = this.handleChangeFile.bind(this);
-        this.handleAlert = this.handleAlert.bind(this);
-    }
-
-    buildForm() {
-        let datos = new FormData();
-
-        datos.append("concepto", this.state.concepto);
-        datos.append("fecha_ingreso", moment(this.state.fecha_ingreso).format("DD/MM/YYYY"));
-        datos.append("fecha_subida", this.state.fecha_subida);
-        datos.append("base_imp", ((this.state.total_ingreso) - (this.state.iva)));
-        datos.append("iva", this.state.iva);
-        datos.append("total_ingreso", this.state.total_ingreso);
-        datos.append("archivo", this.state.archivo);
-        datos.append("estado_factura", this.state.estado_factura);
-        datos.append("id_factura_usuario", this.state.id_factura_usuario);
-
-        const data = Object.fromEntries(datos); //IMPORTANT!
-        console.log("ver aqui",data);
-        // const datajson = JSON.stringify(data);
-        // console.log(datajson);
-        return datos;
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event){
@@ -59,30 +34,106 @@ export default class FormFacturaIngreso extends Component {
         })
     }
 
+    componentDidMount(){
+        this.getFacturaEdit();
+    }
+
+    getFacturaEdit(){
+        //Axios get file
+        axios.get(`http://127.0.0.1:5000/factura_ingreso/download/${this.state.idFacturaEdit}`, 
+        { responseType: 'blob' },
+        {withCredentials: true})
+        .then(response => {
+            // handle success
+            console.log("respuesta del file de la factura a editar", response);
+            console.log("respuesta del file data", response.data); //QUITAR
+            //Obtener Filename formateado
+            const contentDisposition = response.headers['content-disposition'];
+            let fileName = 'unknown';
+            if (contentDisposition) {
+                let fileNameMatch = contentDisposition.match(/filename="(.+)"/);
+                let fileNameNull = contentDisposition.match(/filename=(.+)/);
+                if (fileNameMatch !== null) {
+                fileName = fileNameMatch[1]; 
+                console.log("filename", fileName) 
+                }else {
+                    fileName = fileNameNull[1];
+                    console.log("filename", fileName)
+                }             
+            }
+            //Convertir file de formato BLOB a FIle y enviar a Input File
+            const file = new File([response.data], fileName);
+            const container = new DataTransfer();
+            container.items.add(file);
+            document.querySelector('#file_input').files = container.files;
+            //Actualizar state archivo, con file
+            this.setState({
+                archivo : file
+            })
+        })
+        .catch(error=> {
+          // handle error
+          console.log("error funcion getFileEdit",error);
+        });
+
+        axios.get(`http://127.0.0.1:5000/factura_ingreso/get_edit/${this.state.idFacturaEdit}`, {withCredentials: true}
+        ).then(response => {
+            console.log("respuesta de datos de la factura a editar", response);
+            console.log("respuesta de data", response.data[0]); //QUITAR
+            const {
+                concepto,
+                fecha_ingreso,
+                base_imp,
+                iva,
+                total_ingreso,
+            } = response.data[0];
+
+            this.setState({
+                concepto: concepto,
+                fecha_ingreso: fecha_ingreso,
+                base_imp: base_imp,
+                iva: iva,
+                total_ingreso: total_ingreso,
+            })
+        })     
+    }
+
+    buildForm() {
+        let datos = new FormData();
+        datos.append("concepto", this.state.concepto);
+        datos.append("fecha_ingreso", moment(this.state.fecha_ingreso).format("DD/MM/YYYY"));
+        datos.append("base_imp", ((this.state.total_ingreso) - (this.state.iva)));
+        datos.append("iva", this.state.iva);
+        datos.append("total_ingreso", this.state.total_ingreso);
+        datos.append("archivo", this.state.archivo);
+        return datos;
+
+    }
+
     handleAlert(){
         Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Factura registrada con exito!',
+            title: 'Factura actualizada con exito!',
             showConfirmButton: false,
-            timer: 2000
+            timer: 1500
         }) 
     }
 
     handleSubmit(event){
-        axios.post('http://127.0.0.1:5000/factura_ingreso/add',
+        axios.patch(`http://127.0.0.1:5000/factura_ingreso/update/${this.state.idFacturaEdit}`,
         this.buildForm(),
+
         {headers: {'Content-Type': 'multipart/form-data'}},
         {withCredentials: true}
         ).then(response => {
-            console.log("respuesta subida", response);
+            console.log("factura actualizada", response);
             this.handleAlert();
-            this.props.history.push("/facturas-ingresos");
+            this.props.handleCloseModal();
         }).catch(error => {
-            console.log("error subida", error);
+            console.log("error actualizacion", error);
         })
 
-        console.log(this.buildForm());
         event.preventDefault();
     }
 
@@ -95,10 +146,12 @@ export default class FormFacturaIngreso extends Component {
         )
     }
 
-    render(){
-        return(
-            <div className="form-addfactura-wrapper">
+    
+    render() {
+        return (
+            <div className="form-editfactura-wrapper">
                 <form onSubmit={this.handleSubmit}>
+                    <h1 className="titulo-form">Editar Factura de Ingreso Nº{this.state.idFacturaEdit}</h1>
                     <div className="two-column">
                         <label>
                             Concepto
@@ -170,19 +223,10 @@ export default class FormFacturaIngreso extends Component {
                         />
                     </div>
                     <div className="boton-wrapper">
-                        <button type="submit" className="boton">Añadir Ingreso</button>
+                        <button type="submit" className="boton">Actualizar Factura</button>
                     </div>
                 </form>
-                <div
-                    className='payment-img'
-                    style={{
-                        backgroundImage: `url(${InvoiceImage})`
-                    }}
-                />
-            </div>
-
-
-
+            </div>    
         );
     }
 }

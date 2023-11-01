@@ -4,7 +4,8 @@ import axios from "axios";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUser, faHome, faChartSimple, faReceipt, faEuroSign, faChevronRight, 
         faMoneyBillTrendUp,faCoins,faCirclePlus, faFolderOpen, faComments, faUsersGear,
-        faCircleQuestion, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
+        faCircleQuestion, faSignOutAlt, faDownload, faTrash, faFilePen, faCircleXmark,
+        faCircleCheck, faEye} from "@fortawesome/free-solid-svg-icons";
 
 import NavigationContainer from './navigation/navigation-container';
 import Home from './pages/home';
@@ -24,7 +25,8 @@ import NoMatchAuth from './pages/no-match-auth';
 
 library.add(faUser, faHome, faChartSimple, faReceipt, faEuroSign, faFolderOpen,
             faComments, faUsersGear, faCircleQuestion, faSignOutAlt,faChevronRight,
-            faMoneyBillTrendUp, faCoins, faCirclePlus);
+            faMoneyBillTrendUp, faCoins, faCirclePlus, faDownload, faTrash, faFilePen,
+            faCircleXmark, faCircleCheck, faEye);
 
 export default class App extends Component {
   constructor(props) {

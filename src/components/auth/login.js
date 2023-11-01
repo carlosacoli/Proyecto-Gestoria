@@ -63,7 +63,7 @@ export default class Login extends Component{
 
     render() {
         return (
-            <div>
+            <div className="login-element">
                 <h1>Login - Sistema Gestoria</h1>
                 <div className="error-login">{this.state.errorText}</div>
                 <form onSubmit={this.handleSubmit}>
@@ -85,8 +85,8 @@ export default class Login extends Component{
 
                     /> 
 
-                    <div>
-                        <button type="submit">Iniciar Sesion</button>
+                    <div className="boton-wrapper">
+                        <button className="boton" type="submit">Iniciar Sesion</button>
                     </div> 
                 </form>
             </div>

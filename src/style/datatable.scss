@@ -3,3 +3,31 @@
     font-size: 20px;
     font-weight: bold;
 }
+
+
+.Icon-datatable-red{
+    @include icon-datatable();
+
+    &:hover{
+        font-size: 1.5rem;
+        color: $warning;
+    }
+}
+
+.Icon-datatable-green{
+    @include icon-datatable();
+
+    &:hover{
+        font-size: 1.5rem;
+        color: green;
+    }
+}
+
+.Icon-datatable-teal{
+    @include icon-datatable();
+
+    &:hover{
+        font-size: 1.5rem;
+        color: $dark-teal;
+    }
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { withRouter } from "react-router";
 import { NavLink } from "react-router-dom";
+import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -32,10 +33,30 @@ const NavigationContainer = (props) =>{
     };
 
     const handleSignOut = () =>{
-        localStorage.removeItem('jwt-token-gc');
-        props.history.push("/auth")
-        props.handleLogout();
-  
+        Swal.fire({
+            title: '¿Estas seguro que deseas cerrar sesion?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#28a745',
+            cancelButtonColor: '#dc3545',
+            confirmButtonText: 'Si, Deseo Cerrar Sesion',
+            cancelButtonText: 'No, prefiero quedarme!',
+            
+          }).then(result => {
+            if (result.isConfirmed) {
+                localStorage.removeItem('jwt-token-gc');
+                props.history.push("/auth")
+                props.handleLogout();
+
+                Swal.fire({
+                    confirmButtonColor: '#28a745',
+                    title: 'Sesion cerrada satisfactoriamente!',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+        })
     }
     return(
             <div className="nav-wrapper">
@@ -147,7 +168,7 @@ const NavigationContainer = (props) =>{
                     <div className="icon-navigation">
                         <FontAwesomeIcon icon="sign-out-alt" />
                     </div>
-                    <div>
+                    <div className='logout-wrapper'>
                         <a onClick={handleSignOut}>Cerrar Sesion</a>
                     </div>
                 </div>
