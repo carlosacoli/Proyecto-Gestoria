@@ -19,7 +19,7 @@ export default class ModuloFacturasIngresos extends Component {
       editModalIsOpen: false
     };
 
-    this.getFacturas = this.getFacturas.bind(this);
+    this.getFacturasIng = this.getFacturasIng.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this); 
     this.handleDownloadClick = this.handleDownloadClick.bind(this);
     this.handleVisualizeClick = this.handleVisualizeClick.bind(this);
@@ -29,7 +29,7 @@ export default class ModuloFacturasIngresos extends Component {
     this.handleRejectedClick = this.handleRejectedClick.bind(this);
   }  
     
-  getFacturas(){
+  getFacturasIng(){
     axios.get('http://127.0.0.1:5000/factura_ingreso/get', {withCredentials: true})
     .then(response => {
     // handle success
@@ -46,7 +46,7 @@ export default class ModuloFacturasIngresos extends Component {
   }
 
   componentDidMount(){
-    this.getFacturas();
+    this.getFacturasIng();
   }
 
   handleDeleteClick(id){
@@ -71,7 +71,7 @@ export default class ModuloFacturasIngresos extends Component {
               text: 'La factura ha sido eliminada correctamente!',
               icon: 'success'
             })
-            this.getFacturas();
+            this.getFacturasIng();
           }).catch(error => {
             console.log("Error delete factura", error);
           });
@@ -179,7 +179,7 @@ export default class ModuloFacturasIngresos extends Component {
       editModalIsOpen: false,
       idToEdit: ""
     })
-    this.getFacturas();
+    this.getFacturasIng();
   }
 
   handleAcceptClick(id){
@@ -194,7 +194,7 @@ export default class ModuloFacturasIngresos extends Component {
         showConfirmButton: false,
         timer: 2000
     }) 
-      this.getFacturas();
+      this.getFacturasIng();
     }).catch(error => {
       console.log("Error aceppt Factura", error);
     })
@@ -212,7 +212,7 @@ export default class ModuloFacturasIngresos extends Component {
         showConfirmButton: false,
         timer: 2000
     }) 
-      this.getFacturas();
+      this.getFacturasIng();
     }).catch(error => {
       console.log("Error rejected Factura", error);
     })
@@ -248,7 +248,7 @@ export default class ModuloFacturasIngresos extends Component {
         sortable: true,
       },
       {
-        name: 'Total Gasto',
+        name: 'Total Ingreso',
         selector: row => row.total_ingreso,
         sortable: true,
       },
@@ -273,7 +273,7 @@ export default class ModuloFacturasIngresos extends Component {
       {
         width: "60px",
         cell: (row) => <FontAwesomeIcon onClick={() => this.handleVisualizeClick(row.id)} 
-        title="Descargar Factura" className="Icon-datatable-teal" icon="fa-solid fa-eye"/>,
+        title="Ver Factura" className="Icon-datatable-teal" icon="fa-solid fa-eye"/>,
         center: true 
       },
       {

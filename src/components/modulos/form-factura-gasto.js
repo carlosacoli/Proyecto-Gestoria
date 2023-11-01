@@ -3,19 +3,19 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import moment from 'moment';
 
-import InvoiceImage from '../../../static/assets/imagenes/invoice.png';
+import InvoiceImage from '../../../static/assets/imagenes/payment.jpg';
 
-export default class FormFacturaIngreso extends Component {
+export default class FormFacturaGasto extends Component {
     constructor(props){
         super(props);
 
         this.state ={
             concepto: "",
-            fecha_ingreso: "",
+            fecha_gasto: "",
             fecha_subida: moment().format("DD/MM/YYYY"),
             base_imp: "",
             iva: "",
-            total_ingreso: "",
+            total_gasto: "",
             archivo: "",
             estado_factura: "PENDIENTE",
             id_factura_usuario: "1"
@@ -31,11 +31,11 @@ export default class FormFacturaIngreso extends Component {
         let datos = new FormData();
 
         datos.append("concepto", this.state.concepto);
-        datos.append("fecha_ingreso", moment(this.state.fecha_ingreso).format("DD/MM/YYYY"));
+        datos.append("fecha_gasto", moment(this.state.fecha_gasto).format("DD/MM/YYYY"));
         datos.append("fecha_subida", this.state.fecha_subida);
-        datos.append("base_imp", ((this.state.total_ingreso) - (this.state.iva)));
+        datos.append("base_imp", ((this.state.total_gasto) - (this.state.iva)));
         datos.append("iva", this.state.iva);
-        datos.append("total_ingreso", this.state.total_ingreso);
+        datos.append("total_gasto", this.state.total_gasto);
         datos.append("archivo", this.state.archivo);
         datos.append("estado_factura", this.state.estado_factura);
         datos.append("id_factura_usuario", this.state.id_factura_usuario);
@@ -70,14 +70,13 @@ export default class FormFacturaIngreso extends Component {
     }
 
     handleSubmit(event){
-        axios.post('http://127.0.0.1:5000/factura_ingreso/add',
+        axios.post('http://127.0.0.1:5000/factura_gasto/add',
         this.buildForm(),
         {headers: {'Content-Type': 'multipart/form-data'}},
         {withCredentials: true}
         ).then(response => {
-            console.log("respuesta subida", response);
             this.handleAlert();
-            this.props.history.push("/facturas-ingresos");
+            this.props.history.push("/facturas-gastos");
         }).catch(error => {
             console.log("error subida", error);
         })
@@ -88,10 +87,10 @@ export default class FormFacturaIngreso extends Component {
 
     handleBaseImp(){
         return (
-            (this.state.total_ingreso) === "" ?
+            (this.state.total_gasto) === "" ?
                 ""
             :
-                (parseFloat(this.state.total_ingreso) - parseFloat(this.state.iva)).toFixed(2)
+                (parseFloat(this.state.total_gasto) - parseFloat(this.state.iva)).toFixed(2)
         )
     }
 
@@ -114,11 +113,11 @@ export default class FormFacturaIngreso extends Component {
                         </label>
 
                         <label>
-                            Fecha de Ingreso
+                            Fecha de Gasto
                             <input
                                 type="date"
-                                name="fecha_ingreso"
-                                value={this.state.fecha_ingreso}
+                                name="fecha_gasto"
+                                value={this.state.fecha_gasto}
                                 onChange={this.handleChange}
                                 required
                             />
@@ -139,11 +138,11 @@ export default class FormFacturaIngreso extends Component {
                         </label>
 
                         <label>
-                            Total Ingreso
+                            Total Gasto
                             <input
                                 type="text"
-                                name="total_ingreso"
-                                value={this.state.total_ingreso}
+                                name="total_gasto"
+                                value={this.state.total_gasto}
                                 onChange={this.handleChange}
                                 required
                                 autoComplete="off"
@@ -157,7 +156,7 @@ export default class FormFacturaIngreso extends Component {
                             <p>Base Imponible: {this.handleBaseImp()}
                             </p>
                             <p>IVA: {this.state.iva}</p>
-                            <p>Total Ingreso: {this.state.total_ingreso}</p>
+                            <p>Total Gasto: {this.state.total_gasto}</p>
                         </div>
                     </div>
 
@@ -171,7 +170,7 @@ export default class FormFacturaIngreso extends Component {
                         />
                     </div>
                     <div className="boton-wrapper">
-                        <button type="submit" className="boton">Añadir Ingreso</button>
+                        <button type="submit" className="boton">Añadir Gasto</button>
                     </div>
                 </form>
                 <div

@@ -9,13 +9,13 @@ export default function(){
         <div className="base-modulos">
             <div className="head-container-facturas">
                 <div>
-                    <h2>Facturas Ingresos</h2>
+                    <h2>Facturas de Ingresos</h2>
                 </div>
                 <div className="container-icon-facturas">
                     <Link to="add-factura-ingreso" className="icon-upload-ingreso">
                         <FontAwesomeIcon  icon="circle-plus" />
                     </Link>
-                    <p>Añadir Facturas</p>
+                    <p>Añadir Factura</p>
                 </div>
             </div>
             <div>

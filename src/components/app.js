@@ -20,6 +20,7 @@ import Faq from './pages/faq';
 import GestoriaDetail from './gestoria-system/gestoria-detail';
 import Auth from './pages/auth';
 import AddFacturaIngreso from './modulos/form-factura-ingreso'
+import AddFacturaGasto from './modulos/form-factura-gasto'
 import NoMatch from './pages/no-match';
 import NoMatchAuth from './pages/no-match-auth';
 
@@ -171,6 +172,7 @@ export default class App extends Component {
                 <Route path="/gestion-users" component={Gestion_users} />
                 <Route path="/faq" component={Faq} />
                 <Route path="/add-factura-ingreso" component={AddFacturaIngreso} />
+                <Route path="/add-factura-gasto" component={AddFacturaGasto} />
                 <Route exact path="/gestoria/:slug" component={GestoriaDetail} />
                 <Route component={NoMatch} />
               </Switch>
