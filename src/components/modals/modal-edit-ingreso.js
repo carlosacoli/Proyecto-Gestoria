@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactModal from "react-modal";
 
-import FormEditFactIngreso from "../modulos/form-edit-factura-ingreso"
+import FormEditFactIngreso from "../forms/form-edit-factura-ingreso"
 
 ReactModal.setAppElement(".app-wrapper");
 

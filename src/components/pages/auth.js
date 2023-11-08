@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Login from '../auth/login';
 
-import loginImage from '../../../static/assets/imagenes/auth.jpg';
+import loginImage from '../../../static/assets/imagenes/login.jpg';
 
 export default class Auth extends Component{
     constructor(props){
@@ -13,8 +13,7 @@ export default class Auth extends Component{
 
     handleSuccessfulAuth() {
         this.props.handleSuccessfulLogin();
-        location.assign("/");
-        //<Redirect push to={{pathname: "/"}}/>   
+        location.assign("/"); 
     }
 
     handleUnsuccessfulAuth() {

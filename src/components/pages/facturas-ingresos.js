@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ModuloFacturasIngresos from "../modulos/modulo-facturas-ing";
 
-export default function(){
+export default function(props){
     return(
         <div className="base-modulos">
             <div className="head-container-facturas">
@@ -19,7 +19,10 @@ export default function(){
                 </div>
             </div>
             <div>
-                <ModuloFacturasIngresos />
+                <ModuloFacturasIngresos 
+                    id_user_rol={props.id_user_rol}
+                    id_user_work={props.id_user_work}
+                />
             </div>
         </div>
     );

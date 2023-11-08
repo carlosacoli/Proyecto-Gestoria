@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import 'react-calendar/dist/Calendar.css';
 import { faUser, faHome, faChartSimple, faReceipt, faEuroSign, faChevronRight, 
         faMoneyBillTrendUp,faCoins,faCirclePlus, faFolderOpen, faComments, faUsersGear,
         faCircleQuestion, faSignOutAlt, faDownload, faTrash, faFilePen, faCircleXmark,
-        faCircleCheck, faEye} from "@fortawesome/free-solid-svg-icons";
+        faCircleCheck, faEye, faUserPlus,faUserPen, faUserSlash, faFolderPlus,
+        faFileCircleXmark, faCircleDown, faTriangleExclamation,faKey} from "@fortawesome/free-solid-svg-icons";
+
+
+
 
 import NavigationContainer from './navigation/navigation-container';
 import Home from './pages/home';
@@ -15,19 +20,20 @@ import Facturas_Gastos from './pages/facturas-gastos';
 import Impuestos from './pages/impuestos';
 import Documentos from './pages/documentos';
 import ChatRoom from './pages/chatroom';
-import Gestion_users from './gestoria-system/gestion-users';
+import Gestion_users from './pages/gestion-users';
+import FormAddUser from './forms/form-add-user';
 import Faq from './pages/faq';
-import GestoriaDetail from './gestoria-system/gestoria-detail';
 import Auth from './pages/auth';
-import AddFacturaIngreso from './modulos/form-factura-ingreso'
-import AddFacturaGasto from './modulos/form-factura-gasto'
+import AddFacturaIngreso from './forms/form-factura-ingreso'
+import AddFacturaGasto from './forms/form-factura-gasto'
 import NoMatch from './pages/no-match';
 import NoMatchAuth from './pages/no-match-auth';
 
 library.add(faUser, faHome, faChartSimple, faReceipt, faEuroSign, faFolderOpen,
             faComments, faUsersGear, faCircleQuestion, faSignOutAlt,faChevronRight,
             faMoneyBillTrendUp, faCoins, faCirclePlus, faDownload, faTrash, faFilePen,
-            faCircleXmark, faCircleCheck, faEye);
+            faCircleXmark, faCircleCheck, faEye, faUserPlus, faUserPen, faUserSlash, faFolderPlus,
+            faFileCircleXmark, faCircleDown, faTriangleExclamation, faKey);
 
 export default class App extends Component {
   constructor(props) {
@@ -38,7 +44,8 @@ export default class App extends Component {
       nombre: "",
       apellidos: "",
       id_user: "",
-      id_user_rol: ""
+      id_user_rol: "",
+      id_user_work: ""
     }
 
     this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
@@ -58,7 +65,8 @@ export default class App extends Component {
       nombre: "",
       apellidos: "",
       id_user: "",
-      id_user_rol: ""
+      id_user_rol: "",
+      id_user_work: ""
     });
   }
 
@@ -68,7 +76,8 @@ export default class App extends Component {
       nombre: "",
       apellidos: "",
       id_user: "",
-      id_user_rol: ""
+      id_user_rol: "",
+      id_user_work: ""
     });
   }
 
@@ -79,7 +88,8 @@ export default class App extends Component {
         nombre: "",
         apellidos: "",
         id_user: "",
-        id_user_rol: ""
+        id_user_rol: "",
+        id_user_work: ""
 
       })
       
@@ -94,14 +104,21 @@ export default class App extends Component {
       headers: { Authorization: `Bearer ${token}`}, 
       withCredentials: true
       }).then(response => {
+
+        ((response.data.logged_in_as.id_rol === 3) ? 
+          this.setState({
+            id_user_work: response.data.logged_in_as.id_user
+          }) 
+          : null)
+        
         this.setState({
           loginStatus: "ONLINE",
           nombre: (response.data.logged_in_as.nombre),
           apellidos: (response.data.logged_in_as.apellidos),
           id_user: (response.data.logged_in_as.id_user),
           id_user_rol: (response.data.logged_in_as.id_rol)
-
         })
+        
         console.log("respuesta de status", response) //<---QUITAR
       }).catch(error =>{
         this.setState({
@@ -122,7 +139,6 @@ export default class App extends Component {
         <div className='head'>
           <h1>Sistema de Gestoria</h1>
         </div>
-        {/* <div><h3>{this.state.loginStatus}</h3></div> */} 
         {this.state.loginStatus === "OFFLINE" ? 
           <div className='login-container'>
             <Router>
@@ -162,18 +178,67 @@ export default class App extends Component {
                     />
                   )}
                 />
-                {/* <Route path="/auth" /> */}
                 <Route path="/panel" component={Panel} />
-                <Route path="/facturas-ingresos" component={Facturas_Ingresos} />
-                <Route path="/facturas-gastos" component={Facturas_Gastos} />
+                
+                <Route 
+                  path="/facturas-ingresos" 
+                  render={props =>(
+                    <Facturas_Ingresos
+                      {...props}
+                      id_user_rol={this.state.id_user_rol}
+                      id_user_work={this.state.id_user_work}
+                    />
+                  )}
+                />
+                <Route 
+                  path="/add-factura-ingreso" 
+                  render={props => (
+                    <AddFacturaIngreso
+                      {...props}
+                      id_user_work={this.state.id_user_work}
+                    />                  
+                  )}
+                />
+
+
+                <Route 
+                  path="/facturas-gastos" 
+                  render={props => (
+                    <Facturas_Gastos 
+                      {...props}
+                      id_user_rol={this.state.id_user_rol}
+                      id_user_work={this.state.id_user_work}
+                    />
+                  )}
+                />
+
+                <Route 
+                  path="/add-factura-gasto" 
+                  render={props => (
+                    <AddFacturaGasto
+                      {...props}
+                      id_user_work={this.state.id_user_work}
+                    />
+                  )}
+                />
+
                 <Route path="/impuestos" component={Impuestos} />
-                <Route path="/documentos" component={Documentos} />
+                <Route 
+                  path="/documentos"
+                  render={props =>(
+                    <Documentos
+                      {...props}
+                      id_user_rol={this.state.id_user_rol}
+                      id_user_work={this.state.id_user_work}
+                    />
+                  )} 
+                />
                 <Route path="/chatroom" component={ChatRoom} />
                 <Route path="/gestion-users" component={Gestion_users} />
+                <Route path="/add-user" component={FormAddUser} />
                 <Route path="/faq" component={Faq} />
-                <Route path="/add-factura-ingreso" component={AddFacturaIngreso} />
-                <Route path="/add-factura-gasto" component={AddFacturaGasto} />
-                <Route exact path="/gestoria/:slug" component={GestoriaDetail} />
+                
+                
                 <Route component={NoMatch} />
               </Switch>
 

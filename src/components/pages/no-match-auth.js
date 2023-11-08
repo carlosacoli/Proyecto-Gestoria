@@ -5,12 +5,12 @@ import Image401 from '../../../static/assets/imagenes/unauthorized401.jpg'
 
 export default function() {
     return(
-        <div className="nomatch-auth-wrapper">
+        <div className="nomatch-wrapper">
             <div>
                 <h2>Lo siento! no estas autorizado, por favor inicie sesion </h2>
             </div>
             <div 
-                className='img-nomatch-401'
+                className='img-nomatch'
                 style={{
                     backgroundImage: `url(${Image401})`
                 }}

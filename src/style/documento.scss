@@ -1,0 +1,76 @@
+.base-documentos{
+    margin: 20px;
+
+    .head-container-documentos{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .container-icon-documento{
+            display: flex;
+            margin-right: 5px;
+            align-items: center;
+            
+            p{
+                order: 1;
+                font-weight: bold;
+                font-size: 1.2rem;
+                opacity: 0;
+                padding-right: 10px;
+                transition: ease-in-out 1.5s;
+            }
+
+            .icon-add-documento{
+                order: 2;
+                color: $greenAccept;
+                font-size: 3rem;
+                cursor: pointer;
+                transition: ease-in-out 1.5s;
+
+                &:hover {
+                    color: green;
+                }
+
+                &:hover ~ p {
+                    opacity: 1;
+                }
+            }
+
+            
+        }
+    }
+
+    .table-documentos{ 
+        margin: 10px 50px;
+    }
+}
+
+.form-adddocumento-wrapper{
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 20px 42px;
+ 
+    @include input-element();
+    @include label-element();
+    input{
+        margin-bottom: 70px;
+    }
+ 
+    .titulo-form{
+     font-family: 'Titillium Web', sans-serif;
+     margin-top: 0px;
+     margin-bottom: 30px;
+ 
+    }
+    .boton-wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+    
+        .boton{
+            @include base-boton();
+            width: 200px;
+        }
+    } 
+ }

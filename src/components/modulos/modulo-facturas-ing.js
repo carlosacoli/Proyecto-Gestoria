@@ -9,8 +9,8 @@ import ModalEditFacIngreso from "../modals/modal-edit-ingreso"
 
 
 export default class ModuloFacturasIngresos extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
 
     this.state = {
       isLoading: false,
@@ -18,6 +18,7 @@ export default class ModuloFacturasIngresos extends Component {
       idToEdit: "",
       editModalIsOpen: false
     };
+
 
     this.getFacturasIng = this.getFacturasIng.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this); 
@@ -30,7 +31,7 @@ export default class ModuloFacturasIngresos extends Component {
   }  
     
   getFacturasIng(){
-    axios.get('http://127.0.0.1:5000/factura_ingreso/get', {withCredentials: true})
+    axios.get(`http://127.0.0.1:5000/factura_ingreso/get/${this.props.id_user_work}`, {withCredentials: true})
     .then(response => {
     // handle success
       console.log("respuesta de datos de facturas", response); //QUITAR
@@ -218,8 +219,10 @@ export default class ModuloFacturasIngresos extends Component {
     })
   }
 
+  
+
   render() {
-    const columns = [
+    let columns = [
       {
         name: 'Nº',
         width: "100px",
@@ -265,42 +268,59 @@ export default class ModuloFacturasIngresos extends Component {
         center: true
       },
       {
-        width: "60px",
+        width: "40px",
         cell: (row) => <FontAwesomeIcon onClick={() => this.handleDownloadClick(row.id)} 
         title="Descargar Factura" className="Icon-datatable-green" icon="fa-solid fa-download"/>,
         center: true 
       },
       {
-        width: "60px",
+        width: "40px",
         cell: (row) => <FontAwesomeIcon onClick={() => this.handleVisualizeClick(row.id)} 
         title="Ver Factura" className="Icon-datatable-teal" icon="fa-solid fa-eye"/>,
         center: true 
       },
       {
-        width: "60px",
+        width: "40px",
         cell: (row) => <FontAwesomeIcon onClick={() => this.handleDeleteClick(row.id)} 
         title="Eliminar Factura" className="Icon-datatable-red" icon="fa-solid fa-trash"/>,
         center: true 
       },
       {
-        width: "60px",
+        width: "40px",
         cell: (row) => <FontAwesomeIcon onClick={() => this.handleEditModalClick(row.id)}
         title="Editar Factura" className="Icon-datatable-green" icon="fa-solid fa-file-pen"/>,
         center: true 
-      }, 
+      },
+      // {
+      //   width: "40px",
+      //   cell: (row) => <FontAwesomeIcon onClick={() => this.handleAcceptClick(row.id)}
+      //   title="Aceptar Factura" className="Icon-datatable-green" icon="fa-solid fa-circle-check"/>,
+      //   center: true
+      // } , 
+      // {
+      //   width: "40px",
+      //   cell: (row) => <FontAwesomeIcon onClick={() => this.handleRejectedClick(row.id)}
+      //   title="Rechazar Factura" className="Icon-datatable-red" icon="fa-solid fa-circle-xmark"/>,
+      //   center: true 
+      // }
+      
+    ]
+
+    this.props.id_user_rol == 1 ? columns.push(
       {
-        width: "60px",
+        width: "40px",
         cell: (row) => <FontAwesomeIcon onClick={() => this.handleAcceptClick(row.id)}
         title="Aceptar Factura" className="Icon-datatable-green" icon="fa-solid fa-circle-check"/>,
         center: true
-      }, 
+      } , 
       {
-        width: "60px",
+        width: "40px",
         cell: (row) => <FontAwesomeIcon onClick={() => this.handleRejectedClick(row.id)}
         title="Rechazar Factura" className="Icon-datatable-red" icon="fa-solid fa-circle-xmark"/>,
         center: true 
-      },
-    ]
+      }
+      
+    ) : null
 
     return(
         <div>
@@ -312,6 +332,7 @@ export default class ModuloFacturasIngresos extends Component {
             <DataTable 
                 columns={columns}
                 data={this.state.info}
+                noDataComponent= "No hay Registros disponibles"
                 pagination
             />
             </div>

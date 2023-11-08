@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export default class Login extends Component{
     constructor(props){
         super(props);
@@ -13,6 +15,7 @@ export default class Login extends Component{
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleShowError = this.handleShowError.bind(this);
     }
 
     handleChange(event) {
@@ -44,6 +47,8 @@ export default class Login extends Component{
                     errorText: "Email incorrecto"
                 });
                 this.props.handleUnsuccessfulAuth();
+                this.handleShowError();
+
             }
             if (response.data.msg === "Wrong Password") {
                 this.setState ({
@@ -61,11 +66,20 @@ export default class Login extends Component{
         event.preventDefault();
     }
 
+    handleShowError(){
+        return(
+            <div className="error-login">
+                <FontAwesomeIcon icon="fa-solid fa-triangle-exclamation" />
+                    {this.state.errorText} 
+                <FontAwesomeIcon icon="fa-solid fa-triangle-exclamation" />
+            </div>
+        )
+    }
+
     render() {
         return (
             <div className="login-element">
-                <h1>Login - Sistema Gestoria</h1>
-                <div className="error-login">{this.state.errorText}</div>
+                <h1>Login - Gestoria Colina</h1>
                 <form onSubmit={this.handleSubmit}>
                     <input 
                         type="email"
@@ -84,6 +98,8 @@ export default class Login extends Component{
                         onChange={this.handleChange}
 
                     /> 
+
+                    {this.state.errorText !== "" ? this.handleShowError() : null }
 
                     <div className="boton-wrapper">
                         <button className="boton" type="submit">Iniciar Sesion</button>

@@ -1,4 +1,4 @@
-.nomatch-auth-wrapper{
+.nomatch-wrapper{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,12 +6,11 @@
     width: 100%;
     height: 100%;
 
-    .img-nomatch-401{
+    .img-nomatch{
         background-size:contain;
         background-repeat: no-repeat;
         width: 700px;
         height: 700px;
-        //border: 1px solid black;
     }
 
 
@@ -36,5 +35,4 @@
             font-weight: bold;
         }
     }
-
 }

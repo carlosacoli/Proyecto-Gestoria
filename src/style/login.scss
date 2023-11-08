@@ -29,6 +29,13 @@
             @include label-element();
         }
 
+        .error-login{
+            color: $warning;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
         .boton-wrapper{
             display: flex;
             align-items: center;

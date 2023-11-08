@@ -1,7 +1,29 @@
 .rdt_TableCol {
     background: $teal;
-    font-size: 20px;
+    font-size: 1.2rem;
+    // font-size: 20px;
     font-weight: bold;
+}
+
+.rdt_TableCell{
+    font-size: 1rem;
+}
+
+.download-documento-wrapper{
+    display: flex;
+    align-items: center;
+    transition: 0.5s all ease-in-out;
+    cursor: pointer;
+
+    .Icon-download-documento{
+        font-size: 1.3rem;
+        margin-right: 8px;
+    }
+
+    &:hover{
+        color: green;
+        font-size: 1.05rem;
+    }
 }
 
 

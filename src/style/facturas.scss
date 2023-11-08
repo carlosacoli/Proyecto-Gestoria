@@ -1,38 +1,42 @@
-.head-container-facturas{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.base-modulos{
+    margin:20px;
 
-    .container-icon-facturas{
+    .head-container-facturas{
         display: flex;
-        margin-right: 5px;
+        justify-content: space-between;
         align-items: center;
-        
-        p{
-            order: 1;
-            font-weight: bold;
-            font-size: 1.2rem;
-            opacity: 0;
-            padding-right: 10px;
-            transition: ease-in-out 1.5s;
-        }
 
-        .icon-upload-ingreso{
-            order: 2;
-            color: $greenAccept;
-            font-size: 3rem;
-            cursor: pointer;
-            transition: ease-in-out 1.5s;
-
-            &:hover {
-                color: green;
+        .container-icon-facturas{
+            display: flex;
+            margin-right: 5px;
+            align-items: center;
+            
+            p{
+                order: 1;
+                font-weight: bold;
+                font-size: 1.2rem;
+                opacity: 0;
+                padding-right: 10px;
+                transition: ease-in-out 1.5s;
             }
 
-            &:hover ~ p {
-                opacity: 1;
-            }
-        }
+            .icon-upload-ingreso{
+                order: 2;
+                color: $greenAccept;
+                font-size: 3rem;
+                cursor: pointer;
+                transition: ease-in-out 1.5s;
 
-        
+                &:hover {
+                    color: green;
+                }
+
+                &:hover ~ p {
+                    opacity: 1;
+                }
+            }
+
+            
+        }
     }
 }

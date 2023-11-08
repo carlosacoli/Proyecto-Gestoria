@@ -30,7 +30,7 @@ export default class ModuloFacturasGastos extends Component {
   }  
     
   getFacturasGas(){
-    axios.get('http://127.0.0.1:5000/factura_gasto/get', {withCredentials: true})
+    axios.get(`http://127.0.0.1:5000/factura_gasto/get/${this.props.id_user_work}`, {withCredentials: true})
     .then(response => {
     // handle success
       var datos = response.data
@@ -256,37 +256,37 @@ export default class ModuloFacturasGastos extends Component {
         center: true
       },
       {
-        width: "60px",
+        width: "40px",
         cell: (row) => <FontAwesomeIcon onClick={() => this.handleDownloadClick(row.id)} 
         title="Descargar Factura" className="Icon-datatable-green" icon="fa-solid fa-download"/>,
         center: true 
       },
       {
-        width: "60px",
+        width: "40px",
         cell: (row) => <FontAwesomeIcon onClick={() => this.handleVisualizeClick(row.id)} 
         title="Ver Factura" className="Icon-datatable-teal" icon="fa-solid fa-eye"/>,
         center: true 
       },
       {
-        width: "60px",
+        width: "40px",
         cell: (row) => <FontAwesomeIcon onClick={() => this.handleDeleteClick(row.id)} 
         title="Eliminar Factura" className="Icon-datatable-red" icon="fa-solid fa-trash"/>,
         center: true 
       },
       {
-        width: "60px",
+        width: "40px",
         cell: (row) => <FontAwesomeIcon onClick={() => this.handleEditModalClick(row.id)}
         title="Editar Factura" className="Icon-datatable-green" icon="fa-solid fa-file-pen"/>,
         center: true 
       }, 
       {
-        width: "60px",
+        width: "40px",
         cell: (row) => <FontAwesomeIcon onClick={() => this.handleAcceptClick(row.id)}
         title="Aceptar Factura" className="Icon-datatable-green" icon="fa-solid fa-circle-check"/>,
         center: true
       }, 
       {
-        width: "60px",
+        width: "40px",
         cell: (row) => <FontAwesomeIcon onClick={() => this.handleRejectedClick(row.id)}
         title="Rechazar Factura" className="Icon-datatable-red" icon="fa-solid fa-circle-xmark"/>,
         center: true 
