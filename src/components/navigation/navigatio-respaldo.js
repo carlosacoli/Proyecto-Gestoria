@@ -12,7 +12,6 @@ import Carlitox from "../../../static/assets/imagenes/carlitox.png";
 const NavigationContainer = (props) =>{
 
     const [isActive, setIsActive] = useState(false);
-    const [isActiveAdmin, setIsActiveAdmin] = useState(false);
     
     const dropdownStyle = {
         paddingLeft: '30px',
@@ -21,37 +20,14 @@ const NavigationContainer = (props) =>{
     const dynamicLink = (route, linkText) =>{
         return(
             <div >
-                <NavLink to={route} className="nav-link-wrapper" onClick={() => setIsActiveAdmin(!isActiveAdmin)}>
+                <NavLink to={route} className="nav-link-wrapper" activeClassName="nav-link-active">
                     <div className="icon-navigation">
-                        <FontAwesomeIcon icon="fa-solid fa-gears"  />
+                        <FontAwesomeIcon icon="fa-solid fa-users-gear" />
                     </div>
                     <div>
                         {linkText}
                     </div>
-                    <div className="icon-dropdown">
-                        <FontAwesomeIcon style={{ transform: isActiveAdmin ? "rotate(90deg)" : "rotate(0deg)" }} icon="chevron-right" />
-                    </div>
-                </NavLink>
-                {isActiveAdmin ? 
-                    <div>
-                        <NavLink to="/trabajo-user" className="nav-link-wrapper" style={dropdownStyle}>
-                        <div className="icon-navigation">
-                            <FontAwesomeIcon icon="fa-solid fa-briefcase" />
-                        </div>
-                        <div>
-                            Trabajar con...
-                        </div>
-                        </NavLink>
-                        <NavLink to="/gestion-users" className="nav-link-wrapper" style={dropdownStyle}>
-                            <div className="icon-navigation">
-                                <FontAwesomeIcon icon="fa-solid fa-users-gear" />
-                            </div>
-                            <div>
-                                Gestión de Usuarios
-                            </div>
-                        </NavLink>
-                    </div>
-                : null }  
+                </NavLink>  
             </div>
         );
     };
@@ -176,7 +152,7 @@ const NavigationContainer = (props) =>{
                     </NavLink>   
                 </div>
 
-                {props.id_rol === 1 || props.id_rol === 2 ? dynamicLink("#", "Gestiones Admin") : null }
+                {props.id_rol === 1 || props.id_rol === 2 ? dynamicLink("/gestion-users", "Gestion de Usuarios") : null }
                 
                 <div >
                     <NavLink to="/faq" className="nav-link-wrapper" activeClassName="nav-link-active">

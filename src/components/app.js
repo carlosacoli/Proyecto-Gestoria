@@ -7,25 +7,27 @@ import { faUser, faHome, faChartSimple, faReceipt, faEuroSign, faChevronRight,
         faMoneyBillTrendUp,faCoins,faCirclePlus, faFolderOpen, faComments, faUsersGear,
         faCircleQuestion, faSignOutAlt, faDownload, faTrash, faFilePen, faCircleXmark,
         faCircleCheck, faEye, faUserPlus,faUserPen, faUserSlash, faFolderPlus,
-        faFileCircleXmark, faCircleDown, faTriangleExclamation,faKey} from "@fortawesome/free-solid-svg-icons";
+        faFileCircleXmark, faCircleDown, faTriangleExclamation,faKey, faGears,
+        faBriefcase} from "@fortawesome/free-solid-svg-icons";
 
 
 
 
 import NavigationContainer from './navigation/navigation-container';
+import Auth from './pages/auth';
 import Home from './pages/home';
 import Panel from './pages/panel';
 import Facturas_Ingresos from './pages/facturas-ingresos';
+import AddFacturaIngreso from './forms/form-factura-ingreso'
 import Facturas_Gastos from './pages/facturas-gastos';
+import AddFacturaGasto from './forms/form-factura-gasto'
 import Impuestos from './pages/impuestos';
 import Documentos from './pages/documentos';
 import ChatRoom from './pages/chatroom';
 import Gestion_users from './pages/gestion-users';
+import Trabajo_user from './pages/trabajo-user';
 import FormAddUser from './forms/form-add-user';
 import Faq from './pages/faq';
-import Auth from './pages/auth';
-import AddFacturaIngreso from './forms/form-factura-ingreso'
-import AddFacturaGasto from './forms/form-factura-gasto'
 import NoMatch from './pages/no-match';
 import NoMatchAuth from './pages/no-match-auth';
 
@@ -33,7 +35,7 @@ library.add(faUser, faHome, faChartSimple, faReceipt, faEuroSign, faFolderOpen,
             faComments, faUsersGear, faCircleQuestion, faSignOutAlt,faChevronRight,
             faMoneyBillTrendUp, faCoins, faCirclePlus, faDownload, faTrash, faFilePen,
             faCircleXmark, faCircleCheck, faEye, faUserPlus, faUserPen, faUserSlash, faFolderPlus,
-            faFileCircleXmark, faCircleDown, faTriangleExclamation, faKey);
+            faFileCircleXmark, faCircleDown, faTriangleExclamation, faKey, faGears,faBriefcase);
 
 export default class App extends Component {
   constructor(props) {
@@ -51,6 +53,7 @@ export default class App extends Component {
     this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
     this.handleUnsuccessfulLogin = this.handleUnsuccessfulLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.handleWorkingUser = this.handleWorkingUser.bind(this);
   }
 
   handleSuccessfulLogin() {
@@ -79,6 +82,12 @@ export default class App extends Component {
       id_user_rol: "",
       id_user_work: ""
     });
+  }
+
+  handleWorkingUser(datauser){
+    this.setState({
+      id_user_work: datauser
+    })
   }
 
   checkLoginStatus(){
@@ -222,7 +231,17 @@ export default class App extends Component {
                   )}
                 />
 
-                <Route path="/impuestos" component={Impuestos} />
+                <Route 
+                  path="/impuestos" 
+                  render={props =>(
+                    <Impuestos
+                      {...props}
+                      id_user_rol={this.state.id_user_rol}
+                      id_user_work={this.state.id_user_work}
+                    />
+                  )}
+                />
+                
                 <Route 
                   path="/documentos"
                   render={props =>(
@@ -235,6 +254,16 @@ export default class App extends Component {
                 />
                 <Route path="/chatroom" component={ChatRoom} />
                 <Route path="/gestion-users" component={Gestion_users} />
+                <Route 
+                  path="/trabajo-user"
+                  render={props =>(
+                    <Trabajo_user
+                      {...props}
+                      datauser={this.handleWorkingUser}
+                    />
+                  )} 
+                />
+                
                 <Route path="/add-user" component={FormAddUser} />
                 <Route path="/faq" component={Faq} />
                 
@@ -244,6 +273,7 @@ export default class App extends Component {
 
             </Router> 
           </div>
+          
         }
       </div>
     );

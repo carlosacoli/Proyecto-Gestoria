@@ -7,14 +7,8 @@
 
     @include input-element();
     @include label-element();
+    @include input-select();
 
-    select{
-        margin-left: 50px;
-        width: 150px;
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
 
     .payment-img{
         background-position: top;
@@ -46,6 +40,7 @@
 
    @include input-element();
    @include label-element();
+   @include input-select();
 
    .titulo-form{
     font-family: 'Titillium Web', sans-serif;

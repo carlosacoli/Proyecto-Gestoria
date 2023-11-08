@@ -2,7 +2,7 @@ import React from "react";
 
 import ModuloImpuestos from "../modulos/modulo-impuestos";
 
-export default function(){
+export default function(props){
     return(
         <div className="base-documentos">
             <div className="head-container-documentos">
@@ -11,7 +11,10 @@ export default function(){
                 </div>
             </div>
             <div>
-                <ModuloImpuestos />
+                <ModuloImpuestos 
+                  id_user_rol={props.id_user_rol}
+                  id_user_work={props.id_user_work}
+                />
             </div>
             
         </div>

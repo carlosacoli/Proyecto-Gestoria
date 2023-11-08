@@ -11,12 +11,15 @@ export default function(props){
                 <div>
                     <h2>Facturas de Gastos</h2>
                 </div>
-                <div className="container-icon-facturas">
-                    <Link to="add-factura-gasto" className="icon-upload-ingreso">
-                        <FontAwesomeIcon  icon="circle-plus" />
-                    </Link>
-                    <p>Añadir Factura</p>
-                </div>
+                {props.id_user_work !== "" ?
+                    <div className="container-icon-facturas">
+                        <Link to="add-factura-gasto" className="icon-upload-ingreso">
+                            <FontAwesomeIcon  icon="circle-plus" />
+                        </Link>
+                        <p>Añadir Factura</p>
+                    </div>
+                :null
+                }
             </div>
             <div>
                 <ModuloFacturasGastos 

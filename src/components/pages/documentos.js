@@ -32,10 +32,13 @@ export default function(props){
                 <div>
                     <h2>Documentos</h2>
                 </div>
-                <div className="container-icon-documento">
-                    <FontAwesomeIcon onClick={handleaddModalOpen} className="icon-add-documento" icon="fa-solid fa-folder-plus" />
-                    <p>Subir Documento</p>
-                </div>
+                {props.id_user_work !== "" ?
+                    <div className="container-icon-documento">
+                        <FontAwesomeIcon onClick={handleaddModalOpen} className="icon-add-documento" icon="fa-solid fa-folder-plus" />
+                        <p>Subir Documento</p>
+                    </div>
+                :null
+                }
             </div>
             <div className="table-documentos">
                 <ModuloDocumentos 

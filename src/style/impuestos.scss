@@ -1,0 +1,42 @@
+.title-impuestos{
+    background-color: $teal;
+    padding: 10px;
+    color: black;
+    font-size: 1.4rem;
+   
+}
+
+.table-grid-impuestos{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 30px;
+    margin-left: 10px;
+
+    .title-table-grid-impuestos{
+        font-size: 1.2rem;
+        color: $black-letras;
+        font-weight: 600;
+        text-decoration: underline;
+        margin-bottom: 40px;
+    }
+
+    .data-table-grid-impuestos{
+        margin-bottom: 30px;
+        font-size: 1.1rem;
+        // padding-right: 10px;
+
+        @include input-select();
+
+        select{
+            width: 50px;
+        }
+
+        span{
+            padding-left: 10px;
+            color:black;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    }
+
+}

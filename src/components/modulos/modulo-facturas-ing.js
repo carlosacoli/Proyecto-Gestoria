@@ -6,6 +6,7 @@ import DataTable from 'react-data-table-component';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ModalEditFacIngreso from "../modals/modal-edit-ingreso"
+// import ModuloNoData from "../pages/no-data";
 
 
 export default class ModuloFacturasIngresos extends Component {
@@ -28,6 +29,7 @@ export default class ModuloFacturasIngresos extends Component {
     this.handleModalEditClose = this.handleModalEditClose.bind(this);
     this.handleAcceptClick = this.handleAcceptClick.bind(this);
     this.handleRejectedClick = this.handleRejectedClick.bind(this);
+    this.handleAlertNotIdWork = this.handleAlertNotIdWork.bind(this);
   }  
     
   getFacturasIng(){
@@ -48,6 +50,9 @@ export default class ModuloFacturasIngresos extends Component {
 
   componentDidMount(){
     this.getFacturasIng();
+    if (this.props.id_user_work == "" || this.props.id_user_work == undefined){ 
+      this.handleAlertNotIdWork();
+    }
   }
 
   handleDeleteClick(id){
@@ -219,6 +224,16 @@ export default class ModuloFacturasIngresos extends Component {
     })
   }
 
+  handleAlertNotIdWork(){
+    Swal.fire({
+      position: 'center',
+      icon: 'warning',
+      title: 'Recuerda seleccionar un usuario para trabajar',
+      showConfirmButton: false,
+      timer: 2000
+    })
+  }
+
   
 
   render() {
@@ -291,22 +306,9 @@ export default class ModuloFacturasIngresos extends Component {
         title="Editar Factura" className="Icon-datatable-green" icon="fa-solid fa-file-pen"/>,
         center: true 
       },
-      // {
-      //   width: "40px",
-      //   cell: (row) => <FontAwesomeIcon onClick={() => this.handleAcceptClick(row.id)}
-      //   title="Aceptar Factura" className="Icon-datatable-green" icon="fa-solid fa-circle-check"/>,
-      //   center: true
-      // } , 
-      // {
-      //   width: "40px",
-      //   cell: (row) => <FontAwesomeIcon onClick={() => this.handleRejectedClick(row.id)}
-      //   title="Rechazar Factura" className="Icon-datatable-red" icon="fa-solid fa-circle-xmark"/>,
-      //   center: true 
-      // }
-      
     ]
 
-    this.props.id_user_rol == 1 ? columns.push(
+    this.props.id_user_rol == 1 || this.props.id_user_rol == 2 ? columns.push(
       {
         width: "40px",
         cell: (row) => <FontAwesomeIcon onClick={() => this.handleAcceptClick(row.id)}
@@ -332,8 +334,10 @@ export default class ModuloFacturasIngresos extends Component {
             <DataTable 
                 columns={columns}
                 data={this.state.info}
-                noDataComponent= "No hay Registros disponibles"
+                // noDataComponent={<ModuloNoData />}
                 pagination
+                paginationPerPage = {15}
+                paginationRowsPerPageOptions = {[15, 30, 45, 60, 80, 100]}
             />
             </div>
             <div>
