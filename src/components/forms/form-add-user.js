@@ -3,7 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import moment from 'moment';
 
-import InvoiceImage from '../../../static/assets/imagenes/invoice.png';
+import UserImage from '../../../static/assets/imagenes/users.jpg';
 
 export default class FormAddUser extends Component {
     constructor(props){
@@ -257,7 +257,7 @@ export default class FormAddUser extends Component {
                 <div
                     className='payment-img'
                     style={{
-                        backgroundImage: `url(${InvoiceImage})`
+                        backgroundImage: `url(${UserImage})`
                     }}
                 />
             </div>

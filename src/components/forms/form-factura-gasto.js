@@ -3,7 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import moment from 'moment';
 
-import InvoiceImage from '../../../static/assets/imagenes/payment.jpg';
+import InvoiceImage from '../../../static/assets/imagenes/receipt2.jpg';
 
 export default class FormFacturaGasto extends Component {
     constructor(props){

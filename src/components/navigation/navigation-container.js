@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
-import Carlitox from "../../../static/assets/imagenes/carlitox.png";
+import Logo from "../../../static/assets/imagenes/logo.png";
 
 
 const NavigationContainer = (props) =>{
@@ -85,7 +85,7 @@ const NavigationContainer = (props) =>{
     return(
             <div className="nav-wrapper">
                 <div className="logo-navigation">
-                    <img src={Carlitox}/>
+                    <img src={Logo}/>
                 </div>
                 <div className="user-activo">
                     <div><FontAwesomeIcon className="user-icon" icon="fa-solid fa-user" /></div> 
