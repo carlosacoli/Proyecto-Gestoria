@@ -162,19 +162,6 @@ export default class App extends Component {
                     />
                   )}
                 />
-                {/* cambiar esto aqui */}
-                <Route path="/gestion-users" component={Gestion_users} />
-                    <Route 
-                      path="/trabajo-user"
-                      render={props =>(
-                        <Trabajo_user
-                          {...props}
-                          datauser={this.handleWorkingUser}
-                        />
-                      )} 
-                    />
-                    <Route path="/add-user" component={FormAddUser} />
-                  {/* cambiar esto aqui */}
                 <Route path="*" component={NoMatchAuth} />
               </Switch>
             </Router>
@@ -268,7 +255,7 @@ export default class App extends Component {
                 <Route path="/chatroom" component={ChatRoom} />
                 <Route path="/faq" component={Faq} />
 
-                {/* {(this.state.id_user_rol === 1) || (this.state.id_user_rol === 2) ?
+                {(this.state.id_user_rol === 1) || (this.state.id_user_rol === 2) ?
                   <div>
                     <Route path="/gestion-users" component={Gestion_users} />
                     <Route 
@@ -284,7 +271,7 @@ export default class App extends Component {
                 : null
                 } */}
                 
-                {/* <Route path="/add-user" component={FormAddUser} /> */}
+                {/* <Route path="/add-user" component={FormAddUser} />
                 
                 <Route component={NoMatch} />
               </Switch>
