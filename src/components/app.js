@@ -269,9 +269,9 @@ export default class App extends Component {
                     />
                   </div>
                 : null
-                } */}
+                } 
                 
-                {/* <Route path="/add-user" component={FormAddUser} />
+                <Route path="/add-user" component={FormAddUser} /> 
                 
                 <Route component={NoMatch} />
               </Switch>
