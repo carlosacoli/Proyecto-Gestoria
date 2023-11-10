@@ -109,7 +109,7 @@ export default class App extends Component {
       
     }else if (localStorage.getItem('jwt-token-gc') !== null){
       let token = localStorage.getItem('jwt-token-gc');
-      return axios.get('http://127.0.0.1:5000/protected', {
+      return axios.get('https://gestoria-db-09ec50f82e6d.herokuapp.com/protected', {
       headers: { Authorization: `Bearer ${token}`}, 
       withCredentials: true
       }).then(response => {
@@ -148,7 +148,7 @@ export default class App extends Component {
         <div className='head'>
           <h1>Sistema de Gestoria</h1>
         </div>
-        {this.state.loginStatus === "OFFLINE" ? 
+        {(this.state.loginStatus === "OFFLINE") ? 
           <div className='login-container'>
             <Router>
               <Switch>
@@ -162,6 +162,18 @@ export default class App extends Component {
                     />
                   )}
                 />
+                {/* cambiar esto aqui */}
+                <Route path="/gestion-users" component={Gestion_users} />
+                    <Route 
+                      path="/trabajo-user"
+                      render={props =>(
+                        <Trabajo_user
+                          {...props}
+                          datauser={this.handleWorkingUser}
+                        />
+                      )} 
+                    />
+                  {/* cambiar esto aqui */}
                 <Route path="*" component={NoMatchAuth} />
               </Switch>
             </Router>
@@ -241,7 +253,7 @@ export default class App extends Component {
                     />
                   )}
                 />
-                
+
                 <Route 
                   path="/documentos"
                   render={props =>(
@@ -253,20 +265,25 @@ export default class App extends Component {
                   )} 
                 />
                 <Route path="/chatroom" component={ChatRoom} />
-                <Route path="/gestion-users" component={Gestion_users} />
-                <Route 
-                  path="/trabajo-user"
-                  render={props =>(
-                    <Trabajo_user
-                      {...props}
-                      datauser={this.handleWorkingUser}
+                <Route path="/faq" component={Faq} />
+
+                {/* {(this.state.id_user_rol === 1) || (this.state.id_user_rol === 2) ?
+                  <div>
+                    <Route path="/gestion-users" component={Gestion_users} />
+                    <Route 
+                      path="/trabajo-user"
+                      render={props =>(
+                        <Trabajo_user
+                          {...props}
+                          datauser={this.handleWorkingUser}
+                        />
+                      )} 
                     />
-                  )} 
-                />
+                  </div>
+                : null
+                } */}
                 
                 <Route path="/add-user" component={FormAddUser} />
-                <Route path="/faq" component={Faq} />
-                
                 
                 <Route component={NoMatch} />
               </Switch>

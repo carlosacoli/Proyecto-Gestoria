@@ -82,6 +82,7 @@ const NavigationContainer = (props) =>{
             }
         })
     }
+
     return(
             <div className="nav-wrapper">
                 <div className="logo-navigation">

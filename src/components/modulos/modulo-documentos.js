@@ -25,7 +25,7 @@ export default class ModuloDocumentos extends Component {
   }  
     
   getDocumentos(){
-    axios.get(`http://127.0.0.1:5000/documento/get/${this.props.id_user_work}`, {withCredentials: true})
+    axios.get(`https://gestoria-db-09ec50f82e6d.herokuapp.com/documento/get/${this.props.id_user_work}`, {withCredentials: true})
     .then(response => {
     // handle success
       console.log("respuesta de documentos", response); //QUITAR
@@ -48,6 +48,7 @@ export default class ModuloDocumentos extends Component {
     }
   }
 
+
   handleDeleteClick(id){
     Swal.fire({
       title: '¿Estas seguro que deseas eliminar el documento?',
@@ -61,7 +62,7 @@ export default class ModuloDocumentos extends Component {
       reverseButtons: true
     }).then(result => {
       if (result.isConfirmed) {
-        axios.delete(`http://127.0.0.1:5000/documento/delete/${id}`, {withCredentials: true})
+        axios.delete(`https://gestoria-db-09ec50f82e6d.herokuapp.com/documento/delete/${id}`, {withCredentials: true})
           .then(response => {
             console.log("Documento eliminado correctamente", response);
             Swal.fire({
@@ -88,7 +89,7 @@ export default class ModuloDocumentos extends Component {
   }
 
     handleDownloadClick(id){
-        axios.get(`http://127.0.0.1:5000/documento/download/${id}`, 
+        axios.get(`https://gestoria-db-09ec50f82e6d.herokuapp.com/documento/download/${id}`, 
         { responseType: 'blob' },
         {withCredentials: true})
           .then(response => {
@@ -189,6 +190,7 @@ export default class ModuloDocumentos extends Component {
             <DataTable 
                 columns={columns}
                 data={this.state.info}
+                // noDataComponent={<ModuloNoData />}
                 // noDataComponent={<ModuloNoData />}
                 pagination
                 paginationPerPage = {15}

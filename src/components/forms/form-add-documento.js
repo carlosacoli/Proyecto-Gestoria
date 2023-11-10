@@ -56,7 +56,7 @@ export default class FormAddDocumento extends Component {
     }
 
     handleSubmit(event){
-        axios.post('http://127.0.0.1:5000/documento/add',
+        axios.post('https://gestoria-db-09ec50f82e6d.herokuapp.com/documento/add',
         this.buildForm(),
         {headers: {'Content-Type': 'multipart/form-data'}},
         {withCredentials: true}

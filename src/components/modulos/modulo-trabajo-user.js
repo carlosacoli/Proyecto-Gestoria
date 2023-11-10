@@ -31,7 +31,7 @@ export default class ModuloTrabajoUser extends Component {
   }  
     
     getUsersCliente(){
-        axios.get('http://127.0.0.1:5000/usuario/get/cliente', {withCredentials: true})
+        axios.get('https://gestoria-db-09ec50f82e6d.herokuapp.com/usuario/get/cliente', {withCredentials: true})
         .then(response => {
         // handle success
         console.log("respuesta de datos de usuarios", response); //QUITAR

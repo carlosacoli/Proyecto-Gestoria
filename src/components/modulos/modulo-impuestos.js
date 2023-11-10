@@ -27,7 +27,7 @@ export default class ModuloImpuestos extends Component {
   }  
 
   getSumTotalIngreso(){
-    axios.get(`http://127.0.0.1:5000/factura_ingreso/sum_totalingreso/${this.props.id_user_work}`, {withCredentials: true})
+    axios.get(`https://gestoria-db-09ec50f82e6d.herokuapp.com/factura_ingreso/sum_totalingreso/${this.props.id_user_work}`, {withCredentials: true})
     .then(response => {
     // handle success
       console.log("respuesta de suma total operaciones ingreso", response); //QUITAR
@@ -42,7 +42,7 @@ export default class ModuloImpuestos extends Component {
   }
 
   getSumTotalIvaIngreso(){
-    axios.get(`http://127.0.0.1:5000/factura_ingreso/sum_ivaingreso/${this.props.id_user_work}`, {withCredentials: true})
+    axios.get(`https://gestoria-db-09ec50f82e6d.herokuapp.com/factura_ingreso/sum_ivaingreso/${this.props.id_user_work}`, {withCredentials: true})
     .then(response => {
     // handle success
       console.log("respuesta de suma total iva ingreso", response); //QUITAR
@@ -57,7 +57,7 @@ export default class ModuloImpuestos extends Component {
   }
 
   getSumTotalGasto(){
-    axios.get(`http://127.0.0.1:5000/factura_gasto/sum_totalgasto/${this.props.id_user_work}`, {withCredentials: true})
+    axios.get(`https://gestoria-db-09ec50f82e6d.herokuapp.com/factura_gasto/sum_totalgasto/${this.props.id_user_work}`, {withCredentials: true})
     .then(response => {
     // handle success
       console.log("respuesta de suma total operaciones gasto", response); //QUITAR
@@ -72,7 +72,7 @@ export default class ModuloImpuestos extends Component {
   }
 
   getSumTotalIvaGasto(){
-    axios.get(`http://127.0.0.1:5000/factura_gasto/sum_ivagasto/${this.props.id_user_work}`, {withCredentials: true})
+    axios.get(`https://gestoria-db-09ec50f82e6d.herokuapp.com/factura_gasto/sum_ivagasto/${this.props.id_user_work}`, {withCredentials: true})
     .then(response => {
     // handle success
       console.log("respuesta de suma total iva gasto", response); //QUITAR
