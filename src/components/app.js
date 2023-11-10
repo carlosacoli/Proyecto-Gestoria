@@ -173,6 +173,7 @@ export default class App extends Component {
                         />
                       )} 
                     />
+                    <Route path="/add-user" component={FormAddUser} />
                   {/* cambiar esto aqui */}
                 <Route path="*" component={NoMatchAuth} />
               </Switch>
@@ -283,7 +284,7 @@ export default class App extends Component {
                 : null
                 } */}
                 
-                <Route path="/add-user" component={FormAddUser} />
+                {/* <Route path="/add-user" component={FormAddUser} /> */}
                 
                 <Route component={NoMatch} />
               </Switch>
