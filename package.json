@@ -2,7 +2,9 @@
   "name": "react-redux-router",
   "version": "1.0.0",
   "description": "Basic skeleton codebase for React/Redux/Router applications.",
-  "engines": {"node": "16.x"},
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "preinstall": "npm set audit false",
     "start": "webpack-dev-server --config webpack/dev.config.js --watch",
@@ -63,7 +65,6 @@
     "moment": "^2.29.4",
     "postcss-loader": "^2.1.6",
     "react": "^16.13.1",
-    "react-calendar": "^4.6.1",
     "react-data-table-component": "^7.5.4",
     "react-dom": "^16.13.1",
     "react-jwt": "^1.2.0",

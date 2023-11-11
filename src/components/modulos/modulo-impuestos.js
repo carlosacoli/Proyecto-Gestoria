@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import Calendar from 'react-calendar';
+// import Calendar from 'react-calendar';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 export default class ModuloImpuestos extends Component {
