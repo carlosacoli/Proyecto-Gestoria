@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import axios from 'axios';
-// import Calendar from 'react-calendar';
-
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 export default class ModuloImpuestos extends Component {
@@ -126,11 +123,6 @@ export default class ModuloImpuestos extends Component {
             Impuestos Trimestre: {this.state.año} 
             </div>
             <div>
-            {/* <Calendar
-            selectRange={false}
-            maxDetail='year'
-            defaultView='year'                                                    
-            /> */}
             </div>
             <div className="table-grid-impuestos">
                 <div>
