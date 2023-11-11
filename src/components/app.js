@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import 'react-calendar/dist/Calendar.css';
 import { faUser, faHome, faChartSimple, faReceipt, faEuroSign, faChevronRight, 
         faMoneyBillTrendUp,faCoins,faCirclePlus, faFolderOpen, faComments, faUsersGear,
         faCircleQuestion, faSignOutAlt, faDownload, faTrash, faFilePen, faCircleXmark,

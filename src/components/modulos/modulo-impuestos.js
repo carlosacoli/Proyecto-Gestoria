@@ -176,9 +176,6 @@ export default class ModuloImpuestos extends Component {
             </div>
 
         </div>
-        
-
-
     )
   }
 }
