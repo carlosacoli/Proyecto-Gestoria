@@ -253,10 +253,12 @@ export default class App extends Component {
                 />
                 <Route path="/chatroom" component={ChatRoom} />
                 <Route path="/faq" component={Faq} />
+                
 
                 {(this.state.id_user_rol === 1) || (this.state.id_user_rol === 2) ?
                   <div>
                     <Route path="/gestion-users" component={Gestion_users} />
+                    <Route path="/add-user" component={FormAddUser} />
                     <Route 
                       path="/trabajo-user"
                       render={props =>(
@@ -269,9 +271,7 @@ export default class App extends Component {
                   </div>
                 : null
                 } 
-                
-                <Route path="/add-user" component={FormAddUser} /> 
-                
+                 
                 <Route component={NoMatch} />
               </Switch>
 

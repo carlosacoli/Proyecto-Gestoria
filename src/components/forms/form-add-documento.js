@@ -84,7 +84,7 @@ export default class FormAddDocumento extends Component {
                     <h1 className="titulo-form">Añadir Documento</h1>
                     <div className="one-column">
                         <label>
-                            Nombre {this.props.id_user_work} {this.state.id_documento_user}
+                            Nombre
                             <input
                                 type="text"
                                 name="nombre"

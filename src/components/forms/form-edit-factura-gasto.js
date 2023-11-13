@@ -98,7 +98,7 @@ export default class FormEditFactGasto extends Component {
         let datos = new FormData();
         datos.append("concepto", this.state.concepto);
         datos.append("fecha_gasto", moment(this.state.fecha_gasto).format("DD/MM/YYYY"));
-        datos.append("base_imp", ((this.state.total_gasto) - (this.state.iva)));
+        datos.append("base_imp", ((parseFloat(this.state.total_gasto) - parseFloat(this.state.iva)).toFixed(2)));
         datos.append("iva", this.state.iva);
         datos.append("total_gasto", this.state.total_gasto);
         datos.append("archivo", this.state.archivo);
@@ -169,6 +169,8 @@ export default class FormEditFactGasto extends Component {
                                 value={this.state.fecha_gasto}
                                 onChange={this.handleChange}
                                 required
+                                min="2022-01-01" 
+                                max={moment().format("YYYY-MM-DD")}
                             />
                         </label>
                     </div>
@@ -177,24 +179,26 @@ export default class FormEditFactGasto extends Component {
                         <label>
                             IVA
                             <input
-                                type="text"
+                                type="number"
                                 name="iva"
                                 value={this.state.iva}
                                 onChange={this.handleChange}
                                 required
                                 autoComplete="off"
+                                step="0.01"
                             />
                         </label>
 
                         <label>
                             Total Gasto
                             <input
-                                type="text"
+                                type="number"
                                 name="total_gasto"
                                 value={this.state.total_gasto}
                                 onChange={this.handleChange}
                                 required
                                 autoComplete="off"
+                                step="0.01"
                             />
                         </label>
                     </div>

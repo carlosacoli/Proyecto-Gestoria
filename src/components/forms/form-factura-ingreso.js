@@ -33,7 +33,7 @@ export default class FormFacturaIngreso extends Component {
         datos.append("concepto", this.state.concepto);
         datos.append("fecha_ingreso", moment(this.state.fecha_ingreso).format("DD/MM/YYYY"));
         datos.append("fecha_subida", this.state.fecha_subida);
-        datos.append("base_imp", ((this.state.total_ingreso) - (this.state.iva)));
+        datos.append("base_imp", ((parseFloat(this.state.total_ingreso) - parseFloat(this.state.iva)).toFixed(2)));
         datos.append("iva", this.state.iva);
         datos.append("total_ingreso", this.state.total_ingreso);
         datos.append("archivo", this.state.archivo);
@@ -95,12 +95,13 @@ export default class FormFacturaIngreso extends Component {
         )
     }
 
+    
     render(){
         return(
             <div className="form-addfactura-wrapper">
                 <form onSubmit={this.handleSubmit}>
                     <div className="two-column">
-                        {/* <h2>Nueva Factura de Ingreso</h2> */}
+                        {/* <h2>Nueva Factura de Ingreso </h2> */}
                         <label>
                             Concepto
                             <input
@@ -121,6 +122,8 @@ export default class FormFacturaIngreso extends Component {
                                 value={this.state.fecha_ingreso}
                                 onChange={this.handleChange}
                                 required
+                                min="2022-01-01" 
+                                max={moment().format("YYYY-MM-DD")}
                             />
                         </label>
                     </div>
@@ -129,24 +132,26 @@ export default class FormFacturaIngreso extends Component {
                         <label>
                             IVA
                             <input
-                                type="text"
+                                type="number"
                                 name="iva"
                                 value={this.state.iva}
                                 onChange={this.handleChange}
                                 required
                                 autoComplete="off"
+                                step="0.01"
                             />
                         </label>
 
                         <label>
                             Total Ingreso
                             <input
-                                type="text"
+                                type="number"
                                 name="total_ingreso"
                                 value={this.state.total_ingreso}
                                 onChange={this.handleChange}
                                 required
                                 autoComplete="off"
+                                step="0.01"
                             />
                         </label>
                     </div>

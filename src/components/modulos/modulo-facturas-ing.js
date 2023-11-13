@@ -257,17 +257,17 @@ export default class ModuloFacturasIngresos extends Component {
       },
       {
         name: 'Base Imp.',
-        selector: row => row.base_imp,
+        selector: row => row.base_imp + ' €',
         sortable: true,
       },
       {
         name: 'IVA',
-        selector: row => row.iva,
+        selector: row => row.iva + ' €',
         sortable: true,
       },
       {
         name: 'Total Ingreso',
-        selector: row => row.total_ingreso,
+        selector: row => row.total_ingreso + ' €',
         sortable: true,
       },
       {

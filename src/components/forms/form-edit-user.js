@@ -217,11 +217,13 @@ export default class FormEditUser extends Component {
                         <label>
                             Telefono
                             <input
-                                type="text"
+                                type="tel"
                                 name="telefono"
                                 value={this.state.telefono}
                                 onChange={this.handleChange}
                                 required
+                                minlength="9"
+                                maxlength="14"
                             />
                         </label>
                     </div>

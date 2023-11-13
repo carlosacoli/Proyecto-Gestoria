@@ -199,12 +199,14 @@ export default class FormAddUser extends Component {
                         <label>
                             Telefono
                             <input
-                                type="text"
+                                type="tel"
                                 name="telefono"
                                 value={this.state.telefono}
                                 onChange={this.handleChange}
                                 required
                                 autoComplete="off"
+                                minlength="9"
+                                maxlength="14"
                             />
                         </label>
                     </div>
@@ -246,7 +248,7 @@ export default class FormAddUser extends Component {
                             >
                                 <option value="1">Administrador</option>
                                 <option value="2">Gestor</option>
-                                <option value="3">Cliente</option>
+                                <option value="3">Usuario</option>
                             </select>
                     </label>
 

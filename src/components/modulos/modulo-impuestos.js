@@ -98,8 +98,8 @@ export default class ModuloImpuestos extends Component {
 
     handleIvaDeclarar(){
         return (
-            (this.state.total_iva_ingresos) === "" || (this.state.total_iva_gastos) === "" ?
-            ""
+            (this.state.total_iva_gastos) === ""  || (this.state.total_iva_gastos) === null  ?
+            (this.state.total_iva_ingresos)
             :
             (parseFloat(this.state.total_iva_ingresos) - parseFloat(this.state.total_iva_gastos)).toFixed(2)
         )
@@ -107,7 +107,7 @@ export default class ModuloImpuestos extends Component {
     
     handleIrpfDeclarar(){
         return (
-            (this.state.total_ingresos) === "" ?
+            (this.state.total_ingresos) === "" || (this.state.total_ingresos) === null ?
             ""
             :
             (parseFloat(this.state.total_ingresos) * (parseFloat(this.state.irpf) / 100)).toFixed(2)
@@ -130,16 +130,16 @@ export default class ModuloImpuestos extends Component {
                         Calculos del Trimestre
                     </div>
                     <div className="data-table-grid-impuestos">
-                        Total volumen de operaciones del trimestre: <span>{this.state.total_ingresos}€</span>
+                        Volumen de operaciones del trimestre: <span>{this.state.total_ingresos}€</span>
                     </div>
                     <div className="data-table-grid-impuestos">
                         Iva del volumen de operaciones: <span>{this.state.total_iva_ingresos}€</span>
                     </div>
                     <div className="data-table-grid-impuestos">
-                        Total Gastos de operaciones del trimestre: <span>{this.state.total_gastos}€</span>
+                        Base Imponible de Gastos de operaciones del trimestre: <span>{this.state.total_gastos}€</span>
                     </div>
                     <div className="data-table-grid-impuestos">
-                        Total IVA deducible de operaciones del trimestre: <span>{this.state.total_iva_gastos}€</span>
+                        IVA deducible de operaciones del trimestre: <span>{this.state.total_iva_gastos}€</span>
                     </div>
                 </div>
                 <div>
@@ -147,7 +147,7 @@ export default class ModuloImpuestos extends Component {
                         Calculos de los Impuestos
                     </div>
                     <div className="data-table-grid-impuestos">
-                        Seleccione el IRPF que desea declarar
+                        Seleccione el porcentaje de IRPF que desea declarar
                         <select  
                             type="text"
                             className="select-impuestos"
@@ -155,7 +155,7 @@ export default class ModuloImpuestos extends Component {
                             value={this.state.irpf}
                             onChange={this.handleChangeIrpf}
                         >
-                            <option value="3" selected >3</option>
+                            <option value="3" >3</option>
                             <option value="5">5</option>
                             <option value="7">7</option>
                             <option value="10">10</option>
