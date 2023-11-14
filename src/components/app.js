@@ -152,7 +152,7 @@ export default class App extends Component {
             <Router>
               <Switch>
                 <Route 
-                  exact path="/auth"
+                  exact path="/"
                   render={props => (
                     <Auth
                       {...props}
@@ -177,7 +177,7 @@ export default class App extends Component {
 
               <Switch>
                 <Route 
-                  exact path="/"
+                  exact path="/home"
                   render={props => (
                     <Home
                       {...props}

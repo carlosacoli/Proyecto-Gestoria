@@ -16,7 +16,7 @@ export default function() {
                 }}
             />
             <div className="link-nomatch-404">
-                <Link to="/">Volver al inicio</Link>
+                <Link to="/home">Volver al inicio</Link>
             </div>
         </div>
     );

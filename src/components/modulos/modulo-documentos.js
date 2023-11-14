@@ -41,9 +41,10 @@ export default class ModuloDocumentos extends Component {
   }
 
   componentDidMount(){
-    this.getDocumentos();
     if (this.props.id_user_work == "" || this.props.id_user_work == undefined){ 
       this.handleAlertNotIdWork();
+    }else{
+      this.getDocumentos();
     }
   }
 

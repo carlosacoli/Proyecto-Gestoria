@@ -46,9 +46,10 @@ export default class ModuloFacturasGastos extends Component {
   }
 
   componentDidMount(){
-    this.getFacturasGas();
     if (this.props.id_user_work == "" || this.props.id_user_work == undefined){ 
       this.handleAlertNotIdWork();
+    }else{
+      this.getFacturasGas();
     }
   }
 

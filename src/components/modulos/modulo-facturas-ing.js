@@ -52,9 +52,10 @@ export default class ModuloFacturasIngresos extends Component {
   }
 
   componentDidMount(){
-    this.getFacturasIng();
     if (this.props.id_user_work == "" || this.props.id_user_work == undefined){ 
       this.handleAlertNotIdWork();
+    }else{
+      this.getFacturasIng();
     }
   }
 

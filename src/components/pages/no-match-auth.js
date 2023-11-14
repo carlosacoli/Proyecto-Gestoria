@@ -16,7 +16,7 @@ export default function() {
                 }}
             />
             <div className="link-nomatch-401">
-                <Link to="/auth">Presione Aqui para Iniciar Sesion</Link>
+                <Link to="/">Presione Aqui para Iniciar Sesion</Link>
             </div>
         </div>
     );

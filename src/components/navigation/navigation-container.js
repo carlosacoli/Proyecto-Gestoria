@@ -68,7 +68,7 @@ const NavigationContainer = (props) =>{
           }).then(result => {
             if (result.isConfirmed) {
                 localStorage.removeItem('jwt-token-gc');
-                props.history.push("/auth")
+                props.history.push("/")
                 props.handleLogout();
 
                 Swal.fire({
@@ -93,7 +93,7 @@ const NavigationContainer = (props) =>{
                 </div>
                 <hr />
                 <div>
-                    <NavLink exact to="/" className="nav-link-wrapper" activeClassName="nav-link-active" >
+                    <NavLink exact to="/home" className="nav-link-wrapper" activeClassName="nav-link-active" >
                         <div className="icon-navigation">
                             <FontAwesomeIcon icon="house" />
                         </div>

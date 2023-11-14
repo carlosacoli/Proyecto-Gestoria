@@ -84,10 +84,14 @@ export default class ModuloImpuestos extends Component {
   }
 
   componentDidMount(){
-    this.getSumTotalIngreso();
-    this.getSumTotalIvaIngreso();
-    this.getSumTotalGasto();
-    this.getSumTotalIvaGasto();
+    if (this.props.id_user_work === "" || this.props.id_user_work === undefined){ 
+      null
+    }else{
+      this.getSumTotalIngreso();
+      this.getSumTotalIvaIngreso();
+      this.getSumTotalGasto();
+      this.getSumTotalIvaGasto();
+    }
   }
 
   handleChangeIrpf(event){
@@ -115,8 +119,6 @@ export default class ModuloImpuestos extends Component {
     }
 
   render() {
-        const datoiva = (parseFloat(this.state.total_iva_ingresos) - parseFloat(this.state.total_iva_gastos)).toFixed(2)
-        console.log(datoiva)
     return(
         <div>
             <div className="title-impuestos">
