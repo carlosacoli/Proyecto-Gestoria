@@ -78,6 +78,7 @@
     "style-loader": "^0.21.0",
     "styled-components": "^5.3.11",
     "sweetalert2": "^11.9.0",
+    "sweetalert2-react-content": "^5.0.7",
     "webpack": "4.42.1",
     "webpack-cli": "3.3.11",
     "webpack-dev-middleware": "3.7.2",
