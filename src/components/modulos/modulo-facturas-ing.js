@@ -50,9 +50,9 @@ export default class ModuloFacturasIngresos extends Component {
 
   componentDidMount(){
     this.getFacturasIng();
-    if (this.props.id_user_work == "" || this.props.id_user_work == undefined){ 
-      this.handleAlertNotIdWork();
-    }
+    // if (this.props.id_user_work == "" || this.props.id_user_work == undefined){ 
+    //   this.handleAlertNotIdWork();
+    // }
   }
 
   handleDeleteClick(id){
@@ -224,15 +224,15 @@ export default class ModuloFacturasIngresos extends Component {
     })
   }
 
-  handleAlertNotIdWork(){
-    Swal.fire({
-      position: 'center',
-      icon: 'warning',
-      title: 'Recuerda seleccionar un usuario para trabajar',
-      showConfirmButton: false,
-      timer: 2000
-    })
-  }
+  // handleAlertNotIdWork(){
+  //   Swal.fire({
+  //     position: 'center',
+  //     icon: 'warning',
+  //     title: 'Recuerda seleccionar un usuario para trabajar',
+  //     showConfirmButton: false,
+  //     timer: 2000
+  //   })
+  // }
 
   
 
