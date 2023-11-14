@@ -29,7 +29,7 @@ export default class ModuloFacturasIngresos extends Component {
     this.handleModalEditClose = this.handleModalEditClose.bind(this);
     this.handleAcceptClick = this.handleAcceptClick.bind(this);
     this.handleRejectedClick = this.handleRejectedClick.bind(this);
-    this.handleAlertNotIdWork = this.handleAlertNotIdWork.bind(this);
+    // this.handleAlertNotIdWork = this.handleAlertNotIdWork.bind(this);
   }  
     
   getFacturasIng(){
