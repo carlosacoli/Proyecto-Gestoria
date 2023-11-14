@@ -60,7 +60,7 @@ export default class FormAddUser extends Component {
     }
 
     handleSubmit(event){
-        axios.post('http://127.0.0.1:5000/usuario/add',
+        axios.post('https://gestoria-db-09ec50f82e6d.herokuapp.com/usuario/add',
         this.buildForm(),
         {withCredentials: true}
         ).then(response => {

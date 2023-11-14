@@ -39,7 +39,7 @@ export default class FormEditFactIngreso extends Component {
 
     getFacturaEdit(){
         //Axios get file
-        axios.get(`http://127.0.0.1:5000/factura_ingreso/download/${this.state.idFacturaEdit}`, 
+        axios.get(`https://gestoria-db-09ec50f82e6d.herokuapp.com/factura_ingreso/download/${this.state.idFacturaEdit}`, 
         { responseType: 'blob' },
         {withCredentials: true})
         .then(response => {
@@ -75,7 +75,7 @@ export default class FormEditFactIngreso extends Component {
           console.log("error funcion getFileEdit",error);
         });
 
-        axios.get(`http://127.0.0.1:5000/factura_ingreso/get_edit/${this.state.idFacturaEdit}`, {withCredentials: true}
+        axios.get(`https://gestoria-db-09ec50f82e6d.herokuapp.com/factura_ingreso/get_edit/${this.state.idFacturaEdit}`, {withCredentials: true}
         ).then(response => {
             console.log("respuesta de datos de la factura a editar", response);
             console.log("respuesta de data", response.data[0]); //QUITAR
@@ -120,7 +120,7 @@ export default class FormEditFactIngreso extends Component {
     }
 
     handleSubmit(event){
-        axios.patch(`http://127.0.0.1:5000/factura_ingreso/update/${this.state.idFacturaEdit}`,
+        axios.patch(`https://gestoria-db-09ec50f82e6d.herokuapp.com/factura_ingreso/update/${this.state.idFacturaEdit}`,
         this.buildForm(),
 
         {headers: {'Content-Type': 'multipart/form-data'}},

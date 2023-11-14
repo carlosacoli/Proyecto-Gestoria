@@ -35,7 +35,7 @@ export default class ModuloGestionUsers extends Component {
   }  
     
   getUsers(){
-    axios.get('http://127.0.0.1:5000/usuario/get', {withCredentials: true})
+    axios.get('https://gestoria-db-09ec50f82e6d.herokuapp.com/usuario/get', {withCredentials: true})
     .then(response => {
     // handle success
       console.log("respuesta de datos de usuarios", response); //QUITAR
@@ -67,7 +67,7 @@ export default class ModuloGestionUsers extends Component {
       reverseButtons: true
     }).then(result => {
       if (result.isConfirmed) {
-        axios.delete(`http://127.0.0.1:5000/usuario/delete/${id}`, {withCredentials: true})
+        axios.delete(`https://gestoria-db-09ec50f82e6d.herokuapp.com/usuario/delete/${id}`, {withCredentials: true})
           .then(response => {
             console.log("Usuario eliminado correctamente", response);
             Swal.fire({

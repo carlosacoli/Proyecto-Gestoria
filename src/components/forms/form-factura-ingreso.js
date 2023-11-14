@@ -69,7 +69,7 @@ export default class FormFacturaIngreso extends Component {
     }
 
     handleSubmit(event){
-        axios.post('http://127.0.0.1:5000/factura_ingreso/add',
+        axios.post('https://gestoria-db-09ec50f82e6d.herokuapp.com/factura_ingreso/add',
         this.buildForm(),
         {headers: {'Content-Type': 'multipart/form-data'}},
         {withCredentials: true}
