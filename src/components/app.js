@@ -144,7 +144,7 @@ export default class App extends Component {
   render(){
     return (
       <div className='app'>
-        <div className='head-system'>
+        <div >
           <h1>Sistema de Gestoria</h1>
         </div>
         {(this.state.loginStatus === "OFFLINE") ? 
