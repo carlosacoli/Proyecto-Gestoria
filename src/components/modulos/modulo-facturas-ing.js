@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import SweetAlert2 from 'react-sweetalert2';
 
 // import 'styled-components'
 import DataTable from 'react-data-table-component';
@@ -10,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ModalEditFacIngreso from "../modals/modal-edit-ingreso"
 // import ModuloNoData from "../pages/no-data";
 
-const MySwal = withReactContent(Swal)
+
 
 export default class ModuloFacturasIngresos extends Component {
   constructor(props){
@@ -61,7 +60,7 @@ export default class ModuloFacturasIngresos extends Component {
   }
 
   handleDeleteClick(id){
-    MySwal.fire({
+    Swal.fire({
       title: '¿Estas seguro que deseas eliminar la factura?',
       text: "No podras revertir esto!",
       icon: 'warning',
@@ -76,7 +75,7 @@ export default class ModuloFacturasIngresos extends Component {
         axios.delete(`https://gestoria-db-09ec50f82e6d.herokuapp.com/factura_ingreso/delete/${id}`, {withCredentials: true})
           .then(response => {
             console.log("factura eliminada correctamente", response);
-            MySwal.fire({
+            Swal.fire({
               confirmButtonColor: '#28a745',
               title: 'Eliminada!',
               text: 'La factura ha sido eliminada correctamente!',
@@ -87,9 +86,9 @@ export default class ModuloFacturasIngresos extends Component {
             console.log("Error delete factura", error);
           });
       } else if (
-          result.dismiss === MySwal.DismissReason.cancel
+          result.dismiss === Swal.DismissReason.cancel
         ) {
-          MySwal.fire({
+          Swal.fire({
             confirmButtonColor: '#28a745',
             title:'Cancelado',
             text:'Tu Factura esta a salvo :)',
@@ -134,7 +133,7 @@ export default class ModuloFacturasIngresos extends Component {
         // link.target = '_blank';
 
         //Alert succes download
-        MySwal.fire({
+        Swal.fire({
           position: 'center',
           icon: 'success',
           title: 'Factura descargada con exito!',
@@ -198,7 +197,7 @@ export default class ModuloFacturasIngresos extends Component {
     axios.put(`https://gestoria-db-09ec50f82e6d.herokuapp.com/factura_ingreso/accept/${id}`, {withCredentials: true}
     ).then(response => {
       console.log(response);
-      MySwal.fire({
+      Swal.fire({
         position: 'center',
         icon: 'success',
         title: 'Factura aceptada con exito!',
@@ -216,7 +215,7 @@ export default class ModuloFacturasIngresos extends Component {
     axios.put(`https://gestoria-db-09ec50f82e6d.herokuapp.com/factura_ingreso/rejected/${id}`, {withCredentials: true}
     ).then(response => {
       console.log(response);
-      MySwal.fire({
+      Swal.fire({
         position: 'center',
         icon: 'error',
         title: 'Factura rechazada con exito!',
@@ -232,7 +231,7 @@ export default class ModuloFacturasIngresos extends Component {
   
 
   handleAlertNotIdWork(){
-    MySwal.fire({
+    Swal.fire({
       position: 'center',
       icon: 'warning',
       title: 'Recuerda seleccionar un usuario para trabajar',

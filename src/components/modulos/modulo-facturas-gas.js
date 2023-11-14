@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import Swal from "sweetalert2";
+import SweetAlert2 from 'react-sweetalert2';
 import 'styled-components'
 import DataTable from 'react-data-table-component';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
