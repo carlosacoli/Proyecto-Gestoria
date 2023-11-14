@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Swal from "sweetalert2";
 
 export default class FormEditUser extends Component {
     constructor(props){
@@ -32,7 +31,7 @@ export default class FormEditUser extends Component {
     }
 
     getUserEdit(){
-        axios.get(`https://gestoria-db-09ec50f82e6d.herokuapp.com/usuario/get_edit/${this.state.idUserEdit}`, {withCredentials: true}
+        axios.get(`http://127.0.0.1:5000/usuario/get_edit/${this.state.idUserEdit}`, {withCredentials: true}
         ).then(response => {
             console.log("respuesta de datos del usuario a editar", response);
             console.log("respuesta de data", response.data[0]); //QUITAR
@@ -82,7 +81,7 @@ export default class FormEditUser extends Component {
     }
 
     handleSubmit(event){
-        axios.patch(`https://gestoria-db-09ec50f82e6d.herokuapp.com/usuario/update/${this.state.idUserEdit}`,
+        axios.patch(`http://127.0.0.1:5000/usuario/update/${this.state.idUserEdit}`,
         this.buildForm(),
         {withCredentials: true}
         ).then(response => {

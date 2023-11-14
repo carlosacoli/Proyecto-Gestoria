@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import SweetAlert2 from 'react-sweetalert2';
 
 // import 'styled-components'
 import DataTable from 'react-data-table-component';
@@ -37,7 +36,7 @@ export default class ModuloFacturasIngresos extends Component {
 
    
   getFacturasIng(){
-    axios.get(`https://gestoria-db-09ec50f82e6d.herokuapp.com/factura_ingreso/get/${this.props.id_user_work}`, {withCredentials: true})
+    axios.get(`http://127.0.0.1:5000/factura_ingreso/get/${this.props.id_user_work}`, {withCredentials: true})
     .then(response => {
     // handle success
       console.log("respuesta de datos de facturas", response); //QUITAR
@@ -72,7 +71,7 @@ export default class ModuloFacturasIngresos extends Component {
       reverseButtons: true
     }).then(result => {
       if (result.isConfirmed) {
-        axios.delete(`https://gestoria-db-09ec50f82e6d.herokuapp.com/factura_ingreso/delete/${id}`, {withCredentials: true})
+        axios.delete(`http://127.0.0.1:5000/factura_ingreso/delete/${id}`, {withCredentials: true})
           .then(response => {
             console.log("factura eliminada correctamente", response);
             Swal.fire({
@@ -99,7 +98,7 @@ export default class ModuloFacturasIngresos extends Component {
   }
   
   handleDownloadClick(id){
-    axios.get(`https://gestoria-db-09ec50f82e6d.herokuapp.com/factura_ingreso/download/${id}`, 
+    axios.get(`http://127.0.0.1:5000/factura_ingreso/download/${id}`, 
     { responseType: 'blob' },
     {withCredentials: true})
       .then(response => {
@@ -147,7 +146,7 @@ export default class ModuloFacturasIngresos extends Component {
   }
 
   handleVisualizeClick(id){
-    axios.get(`https://gestoria-db-09ec50f82e6d.herokuapp.com/factura_ingreso/download/${id}`, 
+    axios.get(`http://127.0.0.1:5000/factura_ingreso/download/${id}`, 
     { responseType: 'blob' },
     {withCredentials: true})
       .then(response => {
@@ -194,7 +193,7 @@ export default class ModuloFacturasIngresos extends Component {
 
   handleAcceptClick(id){
     console.log("prueba de accept", id)
-    axios.put(`https://gestoria-db-09ec50f82e6d.herokuapp.com/factura_ingreso/accept/${id}`, {withCredentials: true}
+    axios.put(`http://127.0.0.1:5000/factura_ingreso/accept/${id}`, {withCredentials: true}
     ).then(response => {
       console.log(response);
       Swal.fire({
@@ -212,7 +211,7 @@ export default class ModuloFacturasIngresos extends Component {
 
   handleRejectedClick(id){
     console.log("prueba de rejected", id)
-    axios.put(`https://gestoria-db-09ec50f82e6d.herokuapp.com/factura_ingreso/rejected/${id}`, {withCredentials: true}
+    axios.put(`http://127.0.0.1:5000/factura_ingreso/rejected/${id}`, {withCredentials: true}
     ).then(response => {
       console.log(response);
       Swal.fire({

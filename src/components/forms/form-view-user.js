@@ -33,7 +33,7 @@ export default class FormViewUser extends Component {
     }
 
     getUserEdit(){
-        axios.get(`https://gestoria-db-09ec50f82e6d.herokuapp.com/usuario/get_view/${this.state.idUserView}`, {withCredentials: true}
+        axios.get(`http://127.0.0.1:5000/usuario/get_view/${this.state.idUserView}`, {withCredentials: true}
         ).then(response => {
             console.log("respuesta de datos del usuario a visualizar", response);
             console.log("respuesta de data", response.data[0]); //QUITAR

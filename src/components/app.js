@@ -108,7 +108,7 @@ export default class App extends Component {
       
     }else if (localStorage.getItem('jwt-token-gc') !== null){
       let token = localStorage.getItem('jwt-token-gc');
-      return axios.get('https://gestoria-db-09ec50f82e6d.herokuapp.com/protected', {
+      return axios.get('http://127.0.0.1:5000/protected', {
       headers: { Authorization: `Bearer ${token}`}, 
       withCredentials: true
       }).then(response => {
@@ -144,7 +144,7 @@ export default class App extends Component {
   render(){
     return (
       <div className='app'>
-        <div className='head-system'>
+        <div className='head'>
           <h1>Sistema de Gestoria</h1>
         </div>
         {(this.state.loginStatus === "OFFLINE") ? 

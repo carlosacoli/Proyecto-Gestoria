@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import Swal from 'sweetalert2'
 // import 'styled-components'
 import DataTable from 'react-data-table-component';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -31,7 +30,7 @@ export default class ModuloTrabajoUser extends Component {
   }  
     
     getUsersCliente(){
-        axios.get('https://gestoria-db-09ec50f82e6d.herokuapp.com/usuario/get/cliente', {withCredentials: true})
+        axios.get('http://127.0.0.1:5000/usuario/get/cliente', {withCredentials: true})
         .then(response => {
         // handle success
         console.log("respuesta de datos de usuarios", response); //QUITAR

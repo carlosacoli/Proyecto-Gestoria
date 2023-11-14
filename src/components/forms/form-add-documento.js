@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Swal from "sweetalert2";
 import moment from "moment";
 
 export default class FormAddDocumento extends Component {
@@ -56,7 +55,7 @@ export default class FormAddDocumento extends Component {
     }
 
     handleSubmit(event){
-        axios.post('https://gestoria-db-09ec50f82e6d.herokuapp.com/documento/add',
+        axios.post('http://127.0.0.1:5000/documento/add',
         this.buildForm(),
         {headers: {'Content-Type': 'multipart/form-data'}},
         {withCredentials: true}

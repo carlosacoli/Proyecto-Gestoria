@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import axios from "axios";
-import Swal from "sweetalert2";
 import moment from 'moment';
 
 import UserImage from '../../../static/assets/imagenes/users.jpg';
@@ -61,7 +60,7 @@ export default class FormAddUser extends Component {
     }
 
     handleSubmit(event){
-        axios.post('https://gestoria-db-09ec50f82e6d.herokuapp.com/usuario/add',
+        axios.post('http://127.0.0.1:5000/usuario/add',
         this.buildForm(),
         {withCredentials: true}
         ).then(response => {

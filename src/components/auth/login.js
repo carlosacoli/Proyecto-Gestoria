@@ -26,7 +26,7 @@ export default class Login extends Component{
     }
 
     handleSubmit(event) {
-        axios.post('https://gestoria-db-09ec50f82e6d.herokuapp.com/verify',
+        axios.post('http://127.0.0.1:5000/verify',
         {
             email_usuario: this.state.email,
             password: this.state.password

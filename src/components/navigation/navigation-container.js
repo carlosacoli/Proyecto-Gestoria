@@ -2,7 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 import { withRouter } from "react-router";
 import { NavLink } from "react-router-dom";
-import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
