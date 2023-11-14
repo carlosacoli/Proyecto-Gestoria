@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import Swal from 'sweetalert2'
+// import withReactContent from 'sweetalert2-react-content'
+
 // import 'styled-components'
 import DataTable from 'react-data-table-component';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,8 +21,8 @@ export default class ModuloFacturasIngresos extends Component {
       idToEdit: "",
       editModalIsOpen: false
     };
-
-
+    
+    
     this.getFacturasIng = this.getFacturasIng.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this); 
     this.handleDownloadClick = this.handleDownloadClick.bind(this);
@@ -29,7 +31,8 @@ export default class ModuloFacturasIngresos extends Component {
     this.handleModalEditClose = this.handleModalEditClose.bind(this);
     this.handleAcceptClick = this.handleAcceptClick.bind(this);
     this.handleRejectedClick = this.handleRejectedClick.bind(this);
-    // this.handleAlertNotIdWork = this.handleAlertNotIdWork.bind(this);
+    this.handleAlertNotIdWork = this.handleAlertNotIdWork.bind(this);
+    
   }  
     
   getFacturasIng(){
@@ -99,11 +102,11 @@ export default class ModuloFacturasIngresos extends Component {
     { responseType: 'blob' },
     {withCredentials: true})
       .then(response => {
-        const blob = new Blob([response.data], {type: response.data.type});
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
+        let blob = new Blob([response.data], {type: response.data.type});
+        let url = window.URL.createObjectURL(blob);
+        let link = document.createElement('a');
         link.href = url;
-        const contentDisposition = response.headers['content-disposition'];
+        let contentDisposition = response.headers['content-disposition'];
         let fileName = 'unknown';
         if (contentDisposition) {
             let fileNameMatch = contentDisposition.match(/filename="(.+)"/);
@@ -147,11 +150,11 @@ export default class ModuloFacturasIngresos extends Component {
     { responseType: 'blob' },
     {withCredentials: true})
       .then(response => {
-        const blob = new Blob([response.data], {type: response.data.type});
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
+        let blob = new Blob([response.data], {type: response.data.type});
+        let url = window.URL.createObjectURL(blob);
+        let link = document.createElement('a');
         link.href = url;
-        const contentDisposition = response.headers['content-disposition'];
+        let contentDisposition = response.headers['content-disposition'];
         let fileName = 'unknown';
         if (contentDisposition) {
             let fileNameMatch = contentDisposition.match(/filename="(.+)"/);
