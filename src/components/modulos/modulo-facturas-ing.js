@@ -102,11 +102,11 @@ export default class ModuloFacturasIngresos extends Component {
     { responseType: 'blob' },
     {withCredentials: true})
       .then(response => {
-        let blob = new Blob([response.data], {type: response.data.type});
-        let url = window.URL.createObjectURL(blob);
-        let link = document.createElement('a');
+        const blob = new Blob([response.data], {type: response.data.type});
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
         link.href = url;
-        let contentDisposition = response.headers['content-disposition'];
+        const contentDisposition = response.headers['content-disposition'];
         let fileName = 'unknown';
         if (contentDisposition) {
             let fileNameMatch = contentDisposition.match(/filename="(.+)"/);
@@ -150,11 +150,11 @@ export default class ModuloFacturasIngresos extends Component {
     { responseType: 'blob' },
     {withCredentials: true})
       .then(response => {
-        let blob = new Blob([response.data], {type: response.data.type});
-        let url = window.URL.createObjectURL(blob);
-        let link = document.createElement('a');
+        const blob = new Blob([response.data], {type: response.data.type});
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
         link.href = url;
-        let contentDisposition = response.headers['content-disposition'];
+        const contentDisposition = response.headers['content-disposition'];
         let fileName = 'unknown';
         if (contentDisposition) {
             let fileNameMatch = contentDisposition.match(/filename="(.+)"/);
