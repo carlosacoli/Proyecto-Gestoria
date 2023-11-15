@@ -183,6 +183,7 @@ export default class App extends Component {
                       {...props}
                       nombre={this.state.nombre}
                       apellidos={this.state.apellidos}
+                      id_user_rol={this.state.id_user_rol}
                     />
                   )}
                 />
@@ -257,7 +258,16 @@ export default class App extends Component {
 
                 {(this.state.id_user_rol === 1) || (this.state.id_user_rol === 2) ?
                   <div>
-                    <Route path="/gestion-users" component={Gestion_users} />
+                    <Route 
+                      path="/gestion-users" 
+                      render={props =>(
+                        <Gestion_users
+                          {...props}
+                          id_user_rol={this.state.id_user_rol}
+                        />
+                      )}
+                    />
+                    
                     <Route path="/add-user" component={FormAddUser} />
                     <Route 
                       path="/trabajo-user"

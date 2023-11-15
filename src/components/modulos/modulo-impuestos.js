@@ -102,7 +102,8 @@ export default class ModuloImpuestos extends Component {
 
     handleIvaDeclarar(){
         return (
-            (this.state.total_iva_gastos) === ""  || (this.state.total_iva_gastos) === null  ?
+            (this.state.total_iva_gastos) === ""  || (this.state.total_iva_gastos) === null ||
+            (this.state.total_iva_gastos) !== "" || (this.state.total_iva_gastos) !== null  ?
             (this.state.total_iva_ingresos)
             :
             (parseFloat(this.state.total_iva_ingresos) - parseFloat(this.state.total_iva_gastos)).toFixed(2)

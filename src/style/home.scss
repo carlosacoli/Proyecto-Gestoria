@@ -5,7 +5,6 @@
 
     .home-wrapper{
         background: $teal;
-        
         height: 55%;
         margin: 100px;
         padding: 100px;
@@ -18,7 +17,12 @@
             background: $greyligth;
             height: 100%;
            
-            
+            .home-img{
+                background-size:contain;
+                background-repeat: no-repeat;
+                width: 250px;
+                height: 100px;
+            }
             
            
             

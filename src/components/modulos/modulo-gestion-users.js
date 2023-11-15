@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from 'axios';
-// import Swal from 'sweetalert2'
 import moment from "moment";
 // import 'styled-components'
 import DataTable from 'react-data-table-component';
