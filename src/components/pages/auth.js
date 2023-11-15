@@ -14,6 +14,7 @@ export default class Auth extends Component{
     handleSuccessfulAuth() {
         this.props.handleSuccessfulLogin();
         location.assign("/home"); 
+        // location.href="/home";
     }
 
     handleUnsuccessfulAuth() {

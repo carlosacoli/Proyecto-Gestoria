@@ -267,7 +267,7 @@ export default class App extends Component {
                         />
                       )}
                     />
-                    
+
                     <Route path="/add-user" component={FormAddUser} />
                     <Route 
                       path="/trabajo-user"
