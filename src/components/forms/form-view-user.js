@@ -16,7 +16,7 @@ export default class FormViewUser extends Component {
             telefono: "",
             fecha_creacion: "",
             email: "",
-            id_rol_usuario: ""
+            nombre_rol: ""
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -46,7 +46,7 @@ export default class FormViewUser extends Component {
                 telefono_usuario,
                 fecha_creacion,
                 email_usuario,
-                id_rol_usuario
+                nombre_rol
             } = response.data[0];
 
             this.setState({
@@ -58,7 +58,7 @@ export default class FormViewUser extends Component {
                 telefono: telefono_usuario,
                 fecha_creacion: fecha_creacion,
                 email: email_usuario,
-                id_rol_usuario: id_rol_usuario
+                nombre_rol: nombre_rol
             })
         })     
     }
@@ -145,7 +145,7 @@ export default class FormViewUser extends Component {
                             Rol de Usuario:  
                         </div>
                         <div className="column-right">
-                            {this.state.id_rol_usuario}
+                            {this.state.nombre_rol}
                         </div>
                     </div>
                 </form>

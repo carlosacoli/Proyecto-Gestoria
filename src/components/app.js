@@ -280,7 +280,7 @@ export default class App extends Component {
                     />
                   </div>
                 : null
-                } 
+                }
                  
                 <Route component={NoMatch} />
               </Switch>

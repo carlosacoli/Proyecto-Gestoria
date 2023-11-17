@@ -21,6 +21,7 @@ export default class ModuloImpuestos extends Component {
 
     this.handleIvaDeclarar = this.handleIvaDeclarar.bind(this);
     this.handleChangeIrpf = this.handleChangeIrpf.bind(this);
+    
   }  
 
   getSumTotalIngreso(){
@@ -85,7 +86,7 @@ export default class ModuloImpuestos extends Component {
 
   componentDidMount(){
     if (this.props.id_user_work === "" || this.props.id_user_work === undefined){ 
-      null
+      this.handleAlertNotIdWork();
     }else{
       this.getSumTotalIngreso();
       this.getSumTotalIvaIngreso();
@@ -97,6 +98,16 @@ export default class ModuloImpuestos extends Component {
   handleChangeIrpf(event){
     this.setState({
         [event.target.name]: event.target.value,
+    })
+  }
+
+  handleAlertNotIdWork(){
+    Swal.fire({
+      position: 'center',
+      icon: 'warning',
+      title: 'Recuerda seleccionar un usuario para trabajar',
+      showConfirmButton: false,
+      timer: 2000
     })
   }
 
@@ -123,26 +134,26 @@ export default class ModuloImpuestos extends Component {
     return(
         <div>
             <div className="title-impuestos">
-            Impuestos Trimestre: {this.state.año} 
+            Impuestos Año: {this.state.año} 
             </div>
             <div>
             </div>
             <div className="table-grid-impuestos">
                 <div>
                     <div className="title-table-grid-impuestos">
-                        Calculos del Trimestre
+                        Calculos de las operaciones
                     </div>
                     <div className="data-table-grid-impuestos">
-                        Volumen de operaciones del trimestre: <span>{this.state.total_ingresos}€</span>
+                        Volumen de operaciones: <span>{this.state.total_ingresos}€</span>
                     </div>
                     <div className="data-table-grid-impuestos">
                         Iva del volumen de operaciones: <span>{this.state.total_iva_ingresos}€</span>
                     </div>
                     <div className="data-table-grid-impuestos">
-                        Base Imponible de Gastos de operaciones del trimestre: <span>{this.state.total_gastos}€</span>
+                        Volumen de Gastos de operaciones: <span>{this.state.total_gastos}€</span>
                     </div>
                     <div className="data-table-grid-impuestos">
-                        IVA deducible de operaciones del trimestre: <span>{this.state.total_iva_gastos}€</span>
+                        IVA deducible de operaciones: <span>{this.state.total_iva_gastos}€</span>
                     </div>
                 </div>
                 <div>

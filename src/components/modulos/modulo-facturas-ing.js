@@ -247,7 +247,7 @@ export default class ModuloFacturasIngresos extends Component {
     let columns = [
       {
         name: 'Nº',
-        width: "100px",
+        width: "90px",
         selector: row => row.id,
         sortable: true,
     
@@ -259,6 +259,7 @@ export default class ModuloFacturasIngresos extends Component {
       },
       {
         name: 'Concepto',
+        width: "300px",
         selector: row => row.concepto,
         sortable: true,
       },

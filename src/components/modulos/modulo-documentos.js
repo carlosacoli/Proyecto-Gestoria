@@ -165,7 +165,7 @@ export default class ModuloDocumentos extends Component {
       },
       {
         name: 'Subido Por',
-        selector: row => row.id_rol_upload, 
+        selector: row => row.nombre_rol, 
         sortable: true,
       },
     ]

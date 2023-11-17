@@ -34,7 +34,7 @@ export default class ModuloGestionUsers extends Component {
   }  
     
   getUsers(){
-    axios.get('https://gestoria-db-09ec50f82e6d.herokuapp.com/usuario/get', {withCredentials: true})
+    axios.get('https://gestoria-db-09ec50f82e6d.herokuapp.com/usuario/get-users-details', {withCredentials: true})
     .then(response => {
     // handle success
       console.log("respuesta de datos de usuarios", response); //QUITAR
@@ -176,7 +176,7 @@ export default class ModuloGestionUsers extends Component {
       },
       {
         name: 'Rol usuario',
-        selector: row => row.id_rol_usuario,
+        selector: row => row.nombre_rol,
         sortable: true,
         center: true
       },

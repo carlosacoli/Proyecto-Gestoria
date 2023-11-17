@@ -205,7 +205,7 @@ export default class FormAddUser extends Component {
                                 required
                                 autoComplete="off"
                                 minlength="9"
-                                maxlength="14"
+                                maxlength="16"
                             />
                         </label>
                     </div>
